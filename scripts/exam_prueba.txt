@@ -1,0 +1,172 @@
+## EXAMEN SOBRESALIENTE
+
+1.1: ['ls -lS ../../examen-2025-enero-practicas', 'ls -lS ../../examen-2025-enero-practicas']
+
+1.2: ['ls -a ./*c', 'ls -a *c']
+
+1.3: ['ls ./???/*m', 'ls ???/*m']
+
+1.4: ['ls [ds]?c', 'ls [ds]?c']
+
+1.5: ['mkdir ../test ; cp ../scripts/*gnome* ../test ; ls ../test', 'mkdir ../test; cp ../scripts/*gnome* ../test; ls ../test']
+
+1.6: ['whereis cat ; cp /usr/bin/cat ./mostrar', 'whereis cat; cp /usr/bin/cat mostrar']
+
+1.7: ['./mostrar TODO ; echo \\"**********\\" ; cat TODO', './mostrar TODO; echo \\"*********\\"; cat TODO']
+
+1.8: ['mv ./mostrar ../test ; ls ../test', 'mv mostrar ../test; ls ../test']
+
+1.9: ['cp -r src ../test/source-nano ; ls -R ../test', 'cp -r src ../test/source-nano; ls -R ../test']
+
+1.10: ['cp ../sample_files/document/*/*5*{pdf,rtf} ../test', 'cp ../sample_files/document/*/*5*{pdf,rtf} ../test']
+
+1.11: ['rm ../test/[!j-z]* ; ls ../test', 'rm ../test/[!l-z]*; ls ../test']
+
+1.12: ['tar czvf ../../examen-2025-enero-practicas/boletines/*  boletines.tar.gz', 'tar zcvf  ~/boletines.tar.gz ~/examen-2025-enero-practicas/boletines']
+
+1.13: ['chmod 766 autogen.sh ; ls -l autogen.sh', 'chmod 744 autogen.sh; ls -l autogen.sh']
+
+1.14: ['chmod 555 src ; ls -l src\\n', 'chmod 444 src/*; ls -l src']
+
+1.15: ['du -hs ./??? ; df -h', 'du -h ???; df -H ~']
+
+2.1: ['find image document -type f -name \\"*e*e*\\" -size +600k -size -700k\\n', 'find image document  -name \\"*e*e*\\" -type f -size -700k -size +600k']
+
+2.2: ['find . -type d -name \\"??[fg]\\"', 'find . -type d -name \\"??[fg]\\"']
+
+2.3: ['grep -wl \\"id\\" document/txt/*', 'grep -lw id document/txt/*']
+
+2.4: ['grep -rwnH \\"ergo.$\\" . ', 'grep -nr ergo.$ .']
+
+2.5: ['grep -l \\"^I\\"  document/*t*/*[1-3]*', 'grep -l \\"^I\\" document/*t*/*[1-3]*']
+
+3.1: ['cat NEWS | grep \\"editor\\" | tail -n2  > noticias', 'grep \\"editor\\" NEWS | tail -n2 > noticias']
+
+3.2: ['cat IMPROVEMENTS | head -n5 | grep -v \\"^$\\" | nl >> noticias', 'head -n 5 IMPROVEMENTS | grep -v ^$ | nl  >> noticias']
+
+3.3: ['find /etc -type f -name \\"*init\\" > ficheros_init 2> /dev/null', 'find /etc -type f -name \\"*init\\" > ficheros_init  2>/dev/null']
+
+3.4: ['sleep 3600 & ps ', 'sleep 1h & ps']
+
+3.5: ['pmap $(pgrep sleep) | grep \\"libc\\" | grep \\"x\\"', 'pmap $(pgrep sleep) | grep libc | grep r-x']
+
+3.6: ['pkill -9 sleep', 'pkill -9 sleep']
+
+3.7: ['grep -wn \\"linux\\" src/* | wc -l', 'wc -l $(grep -rl linux src) | grep total']
+
+3.8: ['grep -wn \\"yellow\\" syntax/*java*', 'grep -nw yellow $(find syntax -name \\"*java*\\")']
+
+4.1: ['git restore AUTHORS ; cat AUTHORS', 'git restore AUTHORS; cat AUTHORS']
+
+4.2: ['git diff README ; git restore README', 'git diff README; git restore README']
+
+4.3: ['git restore --staged doc/faq.html\\n', 'git restore --staged doc']
+
+4.4: ['cp ~/recursos-examen/sample_files/LICENSE . ; git add LICENSE ; git commit -m \\"Añadiendo LICENSE\\"', 'cp ../sample_files/LICENSE . ; git add LICENSE; git commit -m \\"Añadiendo LICENSE\\"']
+
+4.5: ['git log -p README | grep \\"^Author\\"', 'git log README* | grep Author']
+
+4.6: ['git rm README ; git status ; git commit -m \\"Confirmando REAMDE borrado\\"', 'git rm README; git status; git commit -m \\"Eliminando README\\"']
+
+5.0: ['2']
+
+5.1: ['gcc miprograma.c arrays_iguales.c -o compara_arrays_static ; ls -l ./compara*', 'gcc -static miprograma.c arrays_iguales.c -o compara_arrays_static; ls -l compara*']
+
+5.2: [None, None]
+
+5.3: ['gcc arrays_iguales.c -S ; cat arrays_iguales.s | grep \\"cmp\\"', 'ldd compara_arrays | grep \\"libc\\" | cut -d \\" \\" -f3']
+
+5.4: ['objdump -d compara_arrays | grep \\"call\\" | wc -l', 'gcc -S arrays_iguales.c; cat arrays_iguales.s | grep cmp']
+
+5.5: ['objdump -d compara_arrays_static | tail -n1 | sed -e \\"s/:/=/g\\"', 'objdump -d compara_arrays | grep call | wc -l']
+
+5.6: ['objdump -d /lib/x86_64-linux-gnu/libc.so.6 | grep \\":$\\" | grep \\"IO_puts\\"', "objdump -d compara_arrays_static |  tail -n 1 | tr ':' '='"]
+
+
+## EXAMEN SUSPENSO
+
+1.0: ['15']
+
+1.1: ['ls -l examen-2025-enero-practicas', 'ls -lS ../../examen-2025-enero-practicas']
+
+1.2: ['ls -a *c', 'ls -a *c']
+
+1.3: ['ls [a-z][a-z][a-z]/*m', 'ls ???/*m']
+
+1.4: ['ls [ds][a-z]c', 'ls [ds]?c']
+
+1.5: ['mkdir ../test \\n', 'whereis cat; cp /usr/bin/cat mostrar']
+
+1.6: ['cp /usr/bin/cat mostrar\\n', './mostrar TODO; echo \\"*********\\"; cat TODO']
+
+1.7: ['mostrar\\n', 'mv mostrar ../test; ls ../test']
+
+1.8: ['mv mostrar test\\n', 'cp -r src ../test/source-nano; ls -R ../test']
+
+1.9: ['cp -r source-nano test\\n', 'cp ../sample_files/document/*/*5*{pdf,rtf} ../test']
+
+1.10: ['cp sample_files/document/*5*{pdf,rtf} test', 'rm ../test/[!l-z]*; ls ../test']
+
+1.11: ['rm test/![jz]*\\n', 'tar zcvf  ~/boletines.tar.gz ~/examen-2025-enero-practicas/boletines']
+
+1.12: ['tar zcvf boletines.tar.gz boletines', 'chmod 744 autogen.sh; ls -l autogen.sh']
+
+1.13: ['chmod 644 autogen.sh\\n', 'chmod 444 src/*; ls -l src']
+
+1.14: ['chmod 000 src\\n', 'du -h ???; df -H ~']
+
+1.15: [None, None]
+
+2.1: ['find image document -type f \\', 'find image document  -name \\"*e*e*\\" -type f -size -700k -size +600k']
+
+2.2: ['find ./\\', 'find . -type d -name \\"??[fg]\\"']
+
+2.3: ['grep -w id document/txt/*', 'grep -lw id document/txt/*']
+
+2.4: ['grep ergo ./*', 'grep -nr ergo.$ .']
+
+2.5: ['grep *t* document/', 'grep -l \\"^I\\" document/*t*/*[1-3]*']
+
+3.0: ['1', '2', '3', '4', '5', '6']
+
+3.1: [None, None]
+
+3.2: [None, None]
+
+3.3: [None, None]
+
+3.4: [None, None]
+
+3.5: [None, None]
+
+3.6: [None, None]
+
+3.7: ['wc -l src/*linux*', 'grep \\"editor\\" NEWS | tail -n2 > noticias']
+
+3.8: ['grep \\', 'head -n 5 IMPROVEMENTS | grep -v ^$ | nl  >> noticias']
+
+4.1: ['git restore AUTHORS\\n', 'git restore AUTHORS; cat AUTHORS']
+
+4.2: ['git diff README\\n', 'git diff README; git restore README']
+
+4.3: ['git restore --staged README', 'git restore --staged doc']
+
+4.4: ['git add LICENSE~/recursos-examen/sample_files\\n', 'cp ../sample_files/LICENSE . ; git add LICENSE; git commit -m \\"Añadiendo LICENSE\\"']
+
+4.5: ['git log /', 'git log README* | grep Author']
+
+4.6: ['git rm README\\n', 'git rm README; git status; git commit -m \\"Eliminando README\\"']
+
+5.0: ['2', '5']
+
+5.1: ['gcc -o miprograma.c arrays_iguales', 'gcc -static miprograma.c arrays_iguales.c -o compara_arrays_static; ls -l compara*']
+
+5.2: [None, None]
+
+5.3: ['gcc arrays_iguales.c -s ', 'ldd compara_arrays | grep \\"libc\\" | cut -d \\" \\" -f3']
+
+5.4: ['objdump -d compara_arrays', 'gcc -S arrays_iguales.c; cat arrays_iguales.s | grep cmp']
+
+5.5: [None, None]
+
+5.6: ['objdump -d compara_arrays', 'objdump -d compara_arrays | grep call | wc -l']
