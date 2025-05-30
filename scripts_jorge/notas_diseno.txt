@@ -1,0 +1,75 @@
+**OJO! CAMBIAR EN EL BLOQUE UNO LA PREGUNTA I.14, QUE APARECE DOS VECES, POR I.14 Y I.15**
+
+1. Cuando el comando es compuesto (es decir, una sucesión de comandos separados por ;) o es una tubería (|), se ha decidido divirlo y comprobar la corrección de cada comando componente por separado:
+
+    - Si no hay el mismo número de comandos componentes -> WRONG_PIPE
+
+    - Si lo hay, entonces el valor que toma el comando es el del comando componente más erróneo. Por ejemplo, si hay un comando que une mediante tuberías 3 "subcomandos", cuyos estados son WRONG_ARGS, WRONG_COMMAND y WRONG_OPTIONS, entonces el valor del comando en total será WRONG_COMMAND.
+
+    - SOPORTE DE SUBSHELLS: Si hay que usar subshells y el alumno no lo ha usado o ha usado un número incorrecto de ellos, se indica mediante WRONG_SUBSHELL.
+
+2. Se ha decidido tratar los "find" como caso particular: 
+    - Dividir comando de alumno y de la solución en opciones y argumentos.
+
+    - En los find, cada opción lleva su correspondiente argumento, y pueden ir en el orden que sea. Mapeamos los argumentos a su opción tanto en alu como en sol; y comparamos que los argumentos se hayan asociado a la opción correcta, y que coincidan con la solución. 
+
+    - Comprobamos que los argumentos que no van con ninguna opción también coincidan.
+
+3. El directorio con los exámenes de los alumnos (introducido como constante en el modulo create_csv_correction) sólo podrá contener eso. Los exámenes estarán etiquetados mediante "examen-ID", donde ID puede ser el nombre, DNI, etc. Lo que se ponga será lo que se muestre en las filas del csv para identificar al alumno en cuestión.
+
+4. Explicación de los CSV's que se generan como salida:
+
+    - Todos se generarán en la carpeta de outputs, cuya ruta se puede indicar manualmente en la constante OUTPUT_FOLDER del módulo principal create_csv_correction.
+
+    - Se genera el CSV conteo-general, que incluye, para cada alumno, el número total de preguntas de cada clase (en blanco, con el comando mal, etc.).
+
+    - Se genera el CSV conteo-por-bloques, que incluye, para cada alumno, el número de preguntas de cada clase POR BLOQUES, etiquetando las columnas de la forma B_i-status. Vemos el número de preguntas de cada estado en el bloque i.
+
+    - Dentro de OUTPUT_FOLDER, se generará un subdirectorio "detail" que contiene un CSV por bloque. Los nombres de cada columna serán los comandos correctos de cada pregunta, y, en cada fila, pondremos en esa columna la respuesta ofrecida por el alumno en cuestión a esa pregunta.
+
+    - Dentro de OUTPUT_FOLDER también, se generará otro subdirectorio "scores"...
+
+5. En el examen-suspenso, como el alumno no ha usado concatenación de comandos con ";" sino que ha puesto uno por línea, el programa solo lee el de la primera línea por lo que, al comparar con la solución, da WRONG_PIPE (no lo veo mal, pero hay que tenerlo en cuenta).
+
+6. Soporte de exámenes del año anterior (u otros):
+    - Hay que ser consistente en el etiquetado de las celdas.
+
+    - Los exámenes del año anterior tienen celdas de comprobación. El programa no las tiene en cuenta para generalizar con los exámenes que no las tienen (y no tener dos versiones de un mismo número de pregunta).
+
+    - Modificar la constante NUM_BLOQUES del módulo correct_exam para especificar los bloques CON CÓDIGO. Si hay alguno que no tenga código, numerarlo el último para poder descartarlo de esta manera (p.e: si hay 5 bloques y uno es sólo de celdas de texto, numerar ese como el quinto y fijar NUM_BLOQUES = 4).
+
+## Fallos de robustez:
+
+- Si el alumno usa rutas absolutas y la solución usa rutas relativas o viceversa, da los argumentos como mal.
+    - PROBLEMA: No sé pasar de ruta relativa a absoluta teniendo en cuenta que la estructura de ficheros de la máquina donde se realiza el examen es distinta a la mía.
+    - Cosas como estas dan error por las rutas: 4.4: [<CommandStatus.WRONG_ARGS: 4>, ['cp ~/recursos-examen/sample_files/LICENSE . ; git add LICENSE ; git commit -m \\"Añadiendo LICENSE\\"', 'cp ../sample_files/LICENSE . ; git add LICENSE; git commit -m \\"Añadiendo LICENSE\\"']]
+
+- Problemas con el find --> La ruta donde buscar va antes de las opciones, y estas se ponen de forma distinta!
+    - SOLUCIONADO.
+
+- Igual hay que hacer adaptaciones para soporte/reconocimiento de subshells --> HECHO!
+
+- En chmod, es posible que los permisos (chmod xyz) puedan establecerse de muchas maneras para hacer lo que se pide. Si no se pone exactamente el xyz de la solución, devuelve WRONG_ARGS
+
+- Es un corrector estricto, cualquier mínimo error lo penaliza bastante (tenerlo en cuenta)
+
+- Caso extremo:
+comando_alu = 'echo \\"**********\\" ; cat TODO'
+comando_sol = 'echo \\"*********\\"; cat TODO'
+Esto da WRONG_ARGS porque el alumno ha puesto un * demás.
+
+- ['cat NEWS | grep \\"editor\\" | tail -n2  > noticias', 'grep \\"editor\\" NEWS | tail -n2 > noticias']. En este caso, da WRONG_PIPE porque hay distinto número de comandos en ambas tuberías, pero realmente ambos son correctos...
+
+- ['sleep 3600 & ps ', 'sleep 1h & ps']. Aquí da WRONG_ARGS también.
+
+- Todos estos dan WRONG_COMMAND:
+
+    - 5.3: [<CommandStatus.WRONG_COMMAND: 2>, ['gcc arrays_iguales.c -S ; cat arrays_iguales.s | grep \\"cmp\\"', 'ldd compara_arrays | grep \\"libc\\" | cut -d \\" \\" -f3']]
+
+    - 5.4: [<CommandStatus.WRONG_COMMAND: 2>, ['objdump -d compara_arrays | grep \\"call\\" | wc -l', 'gcc -S arrays_iguales.c; cat arrays_iguales.s | grep cmp']]
+
+    - 5.5: [<CommandStatus.WRONG_COMMAND: 2>, ['objdump -d compara_arrays_static | tail -n1 | sed -e \\"s/:/=/g\\"', 'objdump -d compara_arrays | grep call | wc -l']]
+
+    - 5.6: [<CommandStatus.WRONG_COMMAND: 2>, ['objdump -d /lib/x86_64-linux-gnu/libc.so.6 | grep \\":$\\" | grep \\"IO_puts\\"', "objdump -d compara_arrays_static |  tail -n 1 | tr ':' '='"]]
+
+- ['find /etc -type f -name \\"*init\\" > ficheros_init 2> /dev/null', 'find /etc -type f -name \\"*init\\" > ficheros_init  2>/dev/null']. Da WRONG_ARGS porque el alumno ha puesto espacio entre "2>" y "/dev/null"; y la solución no.
