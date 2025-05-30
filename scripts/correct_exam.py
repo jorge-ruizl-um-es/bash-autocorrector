@@ -1,8 +1,6 @@
 import subprocess
-import os
 from collections import defaultdict 
 from enum import Enum
-import subprocess
 import re       # para usar regex
 
 # OJO! Los exámenes de este año tienen 5, pero si corregimos alguno del año pasado, como el 5 es todo texto y no hay comandos, hay que poner 4!!!!
