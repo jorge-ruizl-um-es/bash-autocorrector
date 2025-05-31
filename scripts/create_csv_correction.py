@@ -4,7 +4,6 @@ from correct_exam import CommandStatus, execute_diff, compare_commands, NUM_BLOQ
 from scores_by_block import count_by_blocks, extraer_bloques_solutions, map_alucommand_to_answer
 import os
 import shutil
-from collections import defaultdict
 import csv
 
 # NOTA: Cada examen en DIR_EXAMS será un directorio: "examen-{NOMBRE}". "NOMBRE", será lo que identifique al alumno en los csv con los resultados

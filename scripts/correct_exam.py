@@ -17,7 +17,7 @@ class CommandStatus(Enum):
     CORRECT = 7
 
     # Habilitar comparaciones de <
-    def __lt__(self, other):
+    def __lt__(self, other) -> bool:
         return self.value < other.value
 
     # Habilitar print

@@ -2,11 +2,9 @@ import os
 import subprocess
 from collections import defaultdict     # tipo de diccionario que permite valor default para claves que no existen
 from datetime import datetime
-import sys
 import nbformat
 from nbconvert.preprocessors import ClearOutputPreprocessor
 from enum import Enum
-import subprocess
 
 class SubmissionStatus(Enum):
     ON_TIME = 1
