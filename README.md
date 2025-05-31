@@ -34,5 +34,7 @@ In order to do this, the script scans the base directory iterating over each rep
 
 ### `correct_exam.py`
 
+This script integrates the detailed correction of each command in a Jupyter notebook, comparing it to the solutions provided. First, there is a function for reading each notebook of a student, located in a fold, and comparing the answers to the solutions. All these commands are organized in a dictionary with JSON structure. 
 
+Once done that, there is a function to correct each command comparing it to the solution. Depending on the type of command, the correction is lightly different. For example, pipelines, subshells, compound commands, git commands, or `find` commands are corrected each one in the appropriate way. The program set a list of different types of status for each command (BLANK, WRONG_COMMAND, WRONG_SUBSHELL, WRONG_PIPE, WRONG_ARGS, WRONG_OPTIONS, CORRECT). These statuses point out whether the student's command is correct, or what type of mistake has been made.
  
