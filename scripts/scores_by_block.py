@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from correct_exam import execute_diff, compare_commands, CommandStatus, NUM_BLOQUES
 from collections import defaultdict
 import json
