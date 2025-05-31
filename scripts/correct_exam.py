@@ -198,9 +198,10 @@ def correct_subshell(resp_alumno:str, solution:str) -> list:
 
 
 def check_options(lista_partes_alu: list, lista_partes_sol: list) -> bool:
-    # Tomar las palabras que empiecen por "-" en el comando, dado que serán opciones, y comprobar que hay las 
-    # mismas letras en ambos comandos (asumiendo que se ponen todas las opciones en su forma corta, con una sola letra,
-    # y que el orden de aparición no importa)
+    '''
+    Tomar las palabras que empiecen por "-" en el comando, dado que serán opciones, y comprobar que hay las mismas letras en ambos comandos (asumiendo que se ponen todas las opciones en su forma corta, con una sola letra, y que el orden de aparición no importa)
+    '''
+    
     lista_opt_alu = [t for t in lista_partes_alu[1:] if t.startswith("-")]
     set_opt_alu = set()
     for opt in lista_opt_alu:
@@ -211,13 +212,14 @@ def check_options(lista_partes_alu: list, lista_partes_sol: list) -> bool:
     for opt in lista_opt_sol:
         set_opt_sol = set_opt_sol.union(set(opt))
 
-    # Si ambos son distintos, es que, independientemente del orden, el alumno ha puesto otras opciones o que le falta/sobra algo
+    # Si ambos son distintos es que, independientemente del orden, el alumno ha puesto otras opciones o que le falta/sobra algo
     if set_opt_sol != set_opt_alu:
         return False  # mal
     else:
         return True   # bien
     
 def absolutize_route(arg_alu: str) -> str:
+    # PENDIENTE	
     return arg_alu   # la cosa sería hacer el cambio para que funcione
     
 def check_arguments(lista_partes_alu: list, lista_partes_sol: list) -> CommandStatus:
@@ -227,7 +229,6 @@ def check_arguments(lista_partes_alu: list, lista_partes_sol: list) -> CommandSt
     args_sol = [t for t in lista_partes_sol[1:] if not t.startswith("-") and t!='.']
 
     if len(args_alu) != len(args_sol):  # distinto número de argumentos
-
         return CommandStatus.WRONG_ARGS
     
     else:
@@ -243,7 +244,7 @@ def check_arguments(lista_partes_alu: list, lista_partes_sol: list) -> CommandSt
                 arg_sol = arg_sol[2:]
             
             # Si el alumno ha puesto ruta relativa y el comando tiene una ruta absoluta, conviene pasar la ruta relativa
-            # del alumno a absoluta para poder compararlas bien
+            # a absoluta para poder compararlas bien
             if not arg_alu.startswith('/') and arg_sol.startswith('/'):     # ruta relativa
                 arg_alu = absolutize_route(arg_alu)
 
@@ -376,27 +377,29 @@ def correction2(resp_alumno: str, solution: str) -> list:
 # ---------------------------- Función de corrección final, aplicando conteo ---------------------------------
 
 def compare_commands(dict_bloques: defaultdict, detail=False):
-    # Modificación: si le pasamos la opción "detail = True", devolverá el diccionario en el que
-    # vemos una a una las preguntas y el estado que les asigna, así como la lista con la respuesta del 
-    # alumno a dicha pregunta, y la respuesta correcta.
+    '''
+	Para la salida correspondiente a leer un examen (conjunto de notebooks) y compararlos con la solución, cuenta cuántas veces aparece en la corrección cada uno de los estados especificados como resultado de la corrección de cada comando.
+    
+    Modificación: si le pasamos la opción "detail = True", devolverá el diccionario en el que vemos una a una las preguntas y los estados que les asigna, así como la lista con la respuesta del alumno a dicha pregunta, y la respuesta correcta.
+    '''
     
     # Para el alumno que consideremos, contabilizar cuántas preguntas tiene en blanco, comando incorrecto...
     scores = defaultdict(int) 
-    # Diccionario que se devuelve al pedir detail. A cada bloque, mapeará un diccionario que a su vez mapea a cada pregunta
-    # una list con: [status, [comando_respuesta, comando_solution]].
+    
+    # Diccionario que se devuelve al pedir detail. A cada bloque, mapeará un diccionario que a su vez mapea a cada pregunta una lista con: [[estados tras la correccion], [comando_respuesta, comando_solution]].
     dict_debug = defaultdict(dict)
 
     for bloque in range(1, NUM_BLOQUES+1):
         for (pregunta, lista) in dict_bloques[bloque].items():
             if pregunta == 0: 
-                if len(lista)>0:       # preguntas en blanco
+                if len(lista)>0:       # tratamiento de preguntas en blanco
                     scores[CommandStatus.BLANK] += len(lista)
                     dict_debug[bloque][0] = [[CommandStatus.BLANK], lista]
             else:
                 resp_alumno = lista[0]
                 solution = lista[1]
+                
                 if resp_alumno is not None:
-
                     try:
                         list_status = correction2(resp_alumno, solution)
                     except IndexError:
