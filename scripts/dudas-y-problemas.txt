@@ -10,3 +10,5 @@
     - Otros formatos podrían dar problemas! El bloque está en números romanos (I, II, III, IV, o V), y la pregunta estará en números decimales (1, 2, 3...).
 
     - En examen G1-T11aplWA-01-6e1aff-UXTCZA, el alumno se ha cargado las etiquetas de las celdas -> el programa ante esto devuelve por pantalla que el "diff" falló, y no tiene en cuenta este examen.
+
+- Para generalizar los scripts de corrección automática, habría que decidir una forma de etiquetar las celdas en las prácticas. Mi idea es poner los enunciados en formato Markdown, y etiquetar las celdas con `#{I, ..., VII}.{ejercicio}`.  

@@ -48,9 +48,10 @@ def int_to_roman_cutrisimo(num: int) -> str:
     else:
         return "V"
 
-# NOTA: Esta función puede utilizarse para un notebook de prácticas en general considerando un solo bloque y cambiando 
-# las rutas en "codigo_bash_2". Mantendremos los bloques de forma artificial para conservar la estructura del diccionario,
-# que otras funciones del programa asumen. 
+# NOTA: Esta función puede utilizarse para un notebook de prácticas en general. Podemos etiquetarlos con el número de bloque
+# y la pregunta, y localizar en un directorio base la ruta de cada notebook (usar alguna función de repo-summary), cuyo
+# nombre tiene que empezar por "practica<BLOQUE>-" y terminar con "-ejercicios.ipynb". Una vez localizados tanto los de
+# un alumno (dentro de su repositorio) como los del solucionario, se procede igual que antes (añadir parámetro exam:bool).
 
 def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
     """
@@ -66,6 +67,7 @@ def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
     dict_bloques = defaultdict(lambda: defaultdict(list))
 
     for bloque in range(1, NUM_BLOQUES+1):
+        # Podria usarse tambien "grep -E"
         codigo_bash_2 = f"""
         diff -u {ruta_exam}/examen-fc-bloque{str(bloque)}.ipynb {ruta_sol}/examen-fc-bloque{str(bloque)}.ipynb | egrep -A4 "#\s*I|#\s*V";
         """
@@ -81,11 +83,12 @@ def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
         roman = int_to_roman_cutrisimo(bloque)
         patron = rf'\"#\s*{roman}\.\d+\\n\",\n- *\"(.*?)\",*\n'
         patron_sol = r'\+.*?"(.*?)\s+#@solution@\"\n'
+        # Para preguntas en blanco, detectamos el número de la pregunta no contestada dentro del bloque
         patron_blank = rf'\"#\s*{roman}\.\d+\\n\"\n\+ *\"#\s*{roman}\.(.*?)\\n\",\n'
         comandos = re.findall(patron, salida)
         comandos_sol = re.findall(patron_sol, salida)
         comandos_blank = re.findall(patron_blank, salida)
-        comandos_out = []
+        comandos_out = []  # lista de preguntas sin contestar en el bloque
 
         # Caso extraño (en examen-suspenso hay una pregunta donde la solución no aparece en el diff, no sé por qué):
         lista_bloques = salida.split('--\n')
@@ -116,7 +119,7 @@ def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
             dict_bloques[bloque][i].append(comandos[i-1].strip('\\n').strip() if comandos[i-1] is not None else comandos[i-1])
             dict_bloques[bloque][i].append(comandos_sol[i-1].strip('\\n').strip() if comandos_sol[i-1] is not None else comandos_sol[i-1])
         
-        # Meter preguntas ignoradas como en blanco
+        # Meter preguntas ignoradas como en blanco (sus números)
         dict_bloques[bloque][0] += comandos_out
     
     '''
@@ -129,6 +132,9 @@ def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
     return dict_bloques
 
 # ----------------------------- Funciones anexas para corregir un comando por partes --------------------------------------
+
+# NOTA: Aquí puedo hacer que aunque no tengan la misma longitud, se intente corregir, añadiendo a la lista de estados
+# lo de WRONG_PIPE
 
 def divide_pipeline_composed(resp_alumno:str, solution:str) -> list:
     """
@@ -405,6 +411,8 @@ def compare_commands(dict_bloques: defaultdict, detail=False):
     else:
         return scores, dict_debug
 
+
+# ----------------------------------------------------------------------------------------------------------------------
 
 
 if __name__ == "__main__":
