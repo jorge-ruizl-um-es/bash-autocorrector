@@ -48,6 +48,10 @@ def int_to_roman_cutrisimo(num: int) -> str:
     else:
         return "V"
 
+# NOTA: Esta función puede utilizarse para un notebook de prácticas en general considerando un solo bloque y cambiando 
+# las rutas en "codigo_bash_2". Mantendremos los bloques de forma artificial para conservar la estructura del diccionario,
+# que otras funciones del programa asumen. 
+
 def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
     """
     Dado el examen de un alumno (NUM_BLOQUES bloques), lee las respuestas junto con las del notebook con la solución.
