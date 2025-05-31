@@ -15,7 +15,7 @@ In addition, it is focused on giving automated feedback over some notebooks prov
 ### 🔥 Key Features
 
 ✅ **Jupyter Notebook Support** - Process `.ipynb` files seamlessly  
-✅ **Git Integration** - Works with locally cloned repositories
+✅ **Git Integration** - Works with locally cloned repositories  
 ✅ **Precise Error Detection** - Identifies specific mistakes in Bash commands  
 ✅ **Automated Grading** - Compare student scripts against reference solutions  
 ✅ **Custom feedback generation** - Provides actionable improvement suggestions
