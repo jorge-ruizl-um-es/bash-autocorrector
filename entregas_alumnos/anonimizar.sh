@@ -23,7 +23,6 @@ for dir in jupyter-*; do
     fi
 done
 
-
 #####################
 # Paso 1.5: Renombrar directorios o archivos en profundidad en profundidad
 #####################
