@@ -38,7 +38,7 @@ for dir in jupyter-*; do
     if [ -d "$dir" ]; then
         dir_name="${dir%/}"
 		prefix="jupyter-"
-		new_suffix=$(generar_aleatorio -10 -'A-Za-z0-9')
+		new_suffix=$(generar_aleatorio 10 'A-Za-z0-9')
 		new_name="${prefix}${new_suffix}"
         
         echo "Renombrando '$dir' a '$nuevo_directorio'"
@@ -62,10 +62,10 @@ find . -depth -name "jupyter-*" | while read -r path; do
         if [ -f "$path" ]; then
             extension="${old_name##*.}"  # Captura todo después del último punto
             base_name="${old_name%.*}"   # Captura todo antes del último punto
-            new_name="jupyter-$(generate_random_suffix).$extension"
+            new_name="jupyter-$(generar_aleatorio 10 'A-Za-z0-9').$extension"
         else
             # Si es un DIRECTORIO o archivo sin extensión
-            new_name="jupyter-$(generate_random_suffix)"
+            new_name="jupyter-$(generar_aleatorio 10 'A-Za-z0-9')"
         fi
         
         # Renombra (archivo o directorio)
@@ -79,8 +79,26 @@ done
 # Reemplazar 'jupyter-' en notebooks (.ipynb)
 find . -type f -name "*.ipynb" | while read -r notebook; do
 	# Reemplaza 'jupyter-' seguido de texto no aleatorio por 'jupyter-XXXXX'
-	sed -i -E "s/jupyter-[a-zA-Z0-9_-]+/jupyter-$(generate_random_suffix)/g" "$notebook"
+	sed -i -E "s/jupyter-[a-zA-Z0-9_-]+/jupyter-$(generar_aleatorio 10 'A-Za-z0-9')/g" "$notebook"
 	echo "Procesado: $notebook"
 done
+
+# Elimina líneas con patrones de información personal en notebooks (.ipynb)
+find . -type f -name "*.ipynb" -exec sed -i -E '
+    # Elimina líneas con "Author: NOMBRE <email>"
+    /Author: [^<]+ <[^@]+@[^>]+>/d;
+    # Elimina líneas con "user.email=...@..."
+    /user\.email=[^@]+@[^[:space:]]+/d;
+    # Elimina líneas con "email = ...@..."
+    /email[[:space:]]*=[[:space:]]*[^@]+@[^[:space:]]+/d;
+    # Elimina líneas con "Correo electrónico: ...@..."
+    /Correo electrónico[[:space:]]*:[[:space:]]*[^@]+@[^[:space:]]+/d
+	# Elimina líneas con ...@um.es
+	/@um\.es/d;
+	# Elimina líneas con ".../github.com/..."
+	\/github\.com\//d;
+' {} \;
+
+
 echo "Proceso completado."
 
