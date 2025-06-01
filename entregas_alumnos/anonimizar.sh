@@ -1,29 +1,6 @@
 #!/bin/bash
 # Script para renombrar directorios y sustituir datos personales en sus ficheros.
-#
-# Formato del directorio: G1-${IDENTIFICADOR_ALUMNO}-0[1-9]-${HASH}-${NOMBRE_ALUMNO}
-#
-# Cada directorio contiene el fichero "datos_entrega" con las líneas:
-#   alumno_dni=xxxx
-#   alumno_nombre=yyyy
-#   alumno_apellidos=zzzzzz
-#   alumno_email=ttttt@um.es
-#
-# El script:
-# 1. Renombra el directorio sustituyendo el identificador y el nombre por valores aleatorios.
-# 2. Carga los datos de "datos_entrega" para extraer alumno_nombre y alumno_apellidos.
-# 3. En todos los ficheros del directorio, realiza las siguientes sustituciones:
-#      a) Reemplaza el nombre completo original (alumno_nombre + " " + alumno_apellidos)
-#         por el nuevo nombre aleatorio (usado en el renombrado del directorio).
-#      b) Reemplaza el email construido a partir de alumno_nombre (sin espacios y en minúsculas,
-#         con dominio @um.es) por "alumno@um.es".
-#      c) Busca en cualquier parte del fichero cadenas con formato xxxxx@um.es y las reemplaza
-#         por "alumno@um.es".
 
-# Función para generar una cadena aleatoria.
-# Parámetros:
-#   $1: longitud
-#   $2: conjunto de caracteres (por ejemplo, 'A-Za-z0-9' o 'A-Z')
 generar_aleatorio() {
     local longitud=$1
     local charset=$2
