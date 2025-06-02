@@ -174,7 +174,7 @@ def divide_pipeline_composed(resp_alumno:str, solution:str) -> list:
 		set_scores = set_scores.union(set(score))
 	
 	# Si ha detectado en los comandos algún estado además de CORRECT, entonces debemos eliminar el CORRECT que pueda haber
-	if len(set_scores) > 0 and CommandStatus.CORRECT in set_scores:
+	if len(set_scores) > 1 and CommandStatus.CORRECT in set_scores:
 			set_scores.remove(CommandStatus.CORRECT)
 	
 	# Devolver lista de todos los estados de cada comando (sin repetir)
@@ -185,23 +185,26 @@ def correct_subshell(resp_alumno:str, solution:str) -> list:
 	Dado el comando de un alumno y el de la solución, teniendo estos subshells, corrige la parte externa y luego trata el interior del subshell como un comando.
 
 	Devuelve:
-		Lista con el estado de cada subcomando, o estado WRONG_PIPE si no hay el mismo número de subcomandos en la versión del alumno y en la solución.
+		Lista con el estado de cada subcomando. Se añade WRONG_SUBSHELL si no hay el mismo número de subcomandos en la versión del alumno y en la solución.
 	"""
 
 	separacion = resp_alumno.split('$(', 1)
 	separacion_sol = solution.split('$(', 1)
+	
+	set_correcciones_salida = set()
 
 	if len(separacion) != len(separacion_sol):
-		return [CommandStatus.WRONG_SUBSHELL]
-	
-	else:
-		set_correcciones_salida = set()
-		result_externo = correction2(separacion[0].strip(), separacion_sol[0].strip())
-		result_interno = correction2(separacion[1].strip().strip(')'), separacion[1].strip().strip(')'))
-		set_correcciones_salida = set_correcciones_salida.union(set(result_externo))
-		set_correcciones_salida = set_correcciones_salida.union(set(result_interno))
+		set_correcciones_salida.add(CommandStatus.WRONG_SUBSHELL)
+
+	result_externo = correction2(separacion[0].strip(), separacion_sol[0].strip())
+	result_interno = correction2(separacion[1].strip().strip(')'), separacion[1].strip().strip(')'))
+	set_correcciones_salida = set_correcciones_salida.union(set(result_externo))
+	set_correcciones_salida = set_correcciones_salida.union(set(result_interno))
+
+	if len(set_correcciones_salida) > 1 and CommandStatus.CORRECT in set_correcciones_salida:
+		set_correcciones_salida.remove(CommandStatus.CORRECT)
 		
-		return list(set_correcciones_salida)
+	return list(set_correcciones_salida)
 
 
 def check_options(lista_partes_alu: list, lista_partes_sol: list) -> bool:
@@ -225,9 +228,6 @@ def check_options(lista_partes_alu: list, lista_partes_sol: list) -> bool:
 	else:
 		return True   # bien
 	
-def absolutize_route(arg_alu: str) -> str:
-	# PENDIENTE	
-	return arg_alu   # la cosa sería hacer el cambio para que funcione
 	
 def check_arguments(lista_partes_alu: list, lista_partes_sol: list) -> CommandStatus:
 	# Todo lo que no sea comando y no empiece por "-" será argumento
@@ -239,23 +239,25 @@ def check_arguments(lista_partes_alu: list, lista_partes_sol: list) -> CommandSt
 		return CommandStatus.WRONG_ARGS
 	
 	else:
+
+		# Limpiar el ./ en caso de que esté en args_sol + procesar los elementos de la lista
+		for i in range(len(args_sol)):
+			arg_sol = args_sol[i].strip('\\n').strip('\\"').strip(' ') 
+
+			if arg_sol.startswith('./'):
+				arg_sol = arg_sol[2:]
+				args_sol[i] = arg_sol
+
+
 		for i in range(len(args_alu)):
-			# obtener argumentos uno a uno
-			arg_alu = args_alu[i].strip('\\n').strip('\\"').strip(' ')  # vamos a no tener en cuenta saltos de líneas, comillas...
-			arg_sol = args_sol[i].strip('\\n').strip('\\"').strip(' ')  
+			# Obtener argumentos uno a uno, sin tener en cuenta saltos de línea, comillas...
+			arg_alu = args_alu[i].strip('\\n').strip('\\"').strip(' ') 
 			
 			# Limpiar el ./ en caso de que esté
 			if arg_alu.startswith('./'):
 				arg_alu = arg_alu[2:]
-			if arg_sol.startswith('./'):
-				arg_sol = arg_sol[2:]
-			
-			# Si el alumno ha puesto ruta relativa y el comando tiene una ruta absoluta, conviene pasar la ruta relativa
-			# a absoluta para poder compararlas bien
-			if not arg_alu.startswith('/') and arg_sol.startswith('/'):     # ruta relativa
-				arg_alu = absolutize_route(arg_alu)
 
-			if arg_alu != arg_sol:
+			if arg_alu not in args_sol:
 				return CommandStatus.WRONG_ARGS
 		
 		# Si todos han ido coincidiendo, la respuesta es correcta
