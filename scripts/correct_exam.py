@@ -273,10 +273,11 @@ def check_commit(lista_partes_alu: list, lista_partes_sol: list) -> list:
 		lista_correcciones_salida.append(CommandStatus.WRONG_COMMAND)
 	
 	result = check_options(lista_partes_alu, lista_partes_sol)
-	if result and len(lista_correcciones_salida) == 0:
-		lista_correcciones_salida.append(CommandStatus.CORRECT)
-	else:
+
+	if not result:
 		lista_correcciones_salida.append(CommandStatus.WRONG_OPTIONS)
+	elif len(lista_correcciones_salida) == 0:
+		lista_correcciones_salida.append(CommandStatus.CORRECT)
 	
 	return lista_correcciones_salida
 
