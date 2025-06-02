@@ -284,7 +284,7 @@ def check_commit(lista_partes_alu: list, lista_partes_sol: list) -> list:
 def correct_find(lista_partes_alu: list, lista_partes_sol: list) -> list:
 	# En un find, lo más común es que haya varias opciones con un nombre concreto (no son solo letras), de forma que cada una va acompañada de un valor (argumento) concreto
 
-	# ARGUMENTOS
+	# ARGUMENTOS (-digit para, por ejemplo, -size -X)
 	args_alu = [t.strip("\\n") for t in lista_partes_alu[1:] if (not t.startswith("-") or t[1].isdigit())]
 	args_sol = [t.strip("\\n") for t in lista_partes_sol[1:] if (not t.startswith("-") or t[1].isdigit())]
 
