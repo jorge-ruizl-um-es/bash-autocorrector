@@ -8,14 +8,16 @@ import re
 class UnmatchingDicts(Exception):
     pass
 
-# Punto de partida: ruta al examen de un alumno junto con la ruta al examen resuelto. A partir de ello, generamos un diccionario de la forma:
-# {bloque: {pregunta: [STATUS, [respuesta_alumno, respuesta_correcta]]}}
-
-# IMPORTANTE: Asumimos siempre que trabajamos con un solo alumno (es decir, en el módulo principal, iremos llamando a funciones de este módulo iterativamente para cada alumno)
-
 """
-Con estas dos funciones, obtendremos:
+Punto de partida: ruta al examen de un alumno junto con la ruta al examen resuelto. A partir de ello, generamos un diccionario de la forma:
+
+{bloque: {pregunta: [list(STATUS), [respuesta_alumno, respuesta_correcta]]}}
+
+IMPORTANTE: Asumimos siempre que trabajamos con un solo alumno (es decir, en el módulo principal, iremos llamando a funciones de este módulo iterativamente para cada alumno)
+
+Con estas funciones, obtendremos:
     - Diccionario en el que tenemos, para cada bloque, para cada pregunta, su estado, el comando que ha puesto el alumno, y el comando correcto (sólo si el alumno la ha contestado, si no, tendremos en el bloque un diccionario de clave 0 que contiene la lista de preguntas en blanco en dicho bloque).
+    
     - Diccionario en el que tenemos, para cada bloque, para cada pregunta, cuál es la correcta.
 """
 
@@ -61,12 +63,14 @@ def extraer_bloques_solutions(ruta_directorio: str) -> dict:
         pregunta_actual = None
 
         for cell in notebook.get("cells", []):
+            
             # Analizar celdas de código
             if cell["cell_type"] == "code":
                 source = "".join(cell["source"])
 
-                # Buscar el bloque En el que tengamos #(bloque).(pregunta)\n(comando)   #@solution@
+                # Buscar el bloque en el que tengamos #(bloque).(pregunta)\n(comando)   #@solution@
                 bloque_match = re.search(r'#\s*(I+V*|V+)\.(\d+)\n(.*?)\s+#@solution@', source)
+                
                 if bloque_match:
                     # Obtener bloque, pregunta, y comando
                     bloque_romano, pregunta, comando = bloque_match.groups()
@@ -122,7 +126,7 @@ def map_alucommand_to_answer(dict_completo: defaultdict, dict_answers: dict) -> 
 
     Devuelve:
         - Diccionario dict_command_to_answer en el que, para cada bloque, tenemos como clave la respuesta a la pregunta correspondiente, y como valor la respuesta ofrecida por el alumno. 
-            AÑADIDO: los valores son una lista --> [respuesta, valor-de-correccion]
+            AÑADIDO: los valores son una lista --> [respuesta-alumno, valor-de-correccion]
     '''
 
     # Si no hay el mismo número de bloques (claves) en los diccionarios, no podemos generar la salida
@@ -137,12 +141,18 @@ def map_alucommand_to_answer(dict_completo: defaultdict, dict_answers: dict) -> 
 
         # Almacenar preguntas respondidas por el alumno
         for pregunta in dict_answers[bloque].keys():
-            key_salida = dict_answers[bloque][pregunta]
+            respuesta_correcta = dict_answers[bloque][pregunta]
+            
             if pregunta in dict_completo[bloque]:
-                dict_command_to_answer[bloque][key_salida] = [dict_completo[bloque][pregunta][1][0]]  # ver estructura de dict_completo
-                dict_command_to_answer[bloque][key_salida].append(dict_completo[bloque][pregunta][0])
+                # Respuesta del alumno --> acceder a la primera posición de la sgunda lista almacenada en bloque:pregunta
+                dict_command_to_answer[bloque][respuesta_correcta] = [dict_completo[bloque][pregunta][1][0]] 
+                
+                # Añadir el estado de la corrección
+                dict_command_to_answer[bloque][respuesta_correcta].append(dict_completo[bloque][pregunta][0])
+                
             else:
-                dict_command_to_answer[bloque][key_salida] = [" ", [CommandStatus.BLANK]]
+                # Si la pregunta no está en el dict_completo, entonces el alumno la ha dejado en blanco...
+                dict_command_to_answer[bloque][respuesta_correcta] = [" ", [CommandStatus.BLANK]]
     
     return dict_command_to_answer
 

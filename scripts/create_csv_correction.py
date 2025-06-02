@@ -6,7 +6,9 @@ import os
 import shutil
 import csv
 
-# NOTA: Cada examen en DIR_EXAMS será un directorio: "examen-{NOMBRE}". "NOMBRE", será lo que identifique al alumno en los csv con los resultados
+'''
+NOTA: Cada examen en DIR_EXAMS será un directorio: "examen-{NOMBRE}". "NOMBRE", será lo que identifique al alumno en los csv con los resultados
+'''
 
 # CAMBIAR CONSTANTES CON LAS RUTAS/NOMBRES DE DIRECTORIO DESEADOS
 RUTA_SOL = "examen-resuelto-2024"
