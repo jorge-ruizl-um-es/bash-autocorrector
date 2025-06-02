@@ -292,10 +292,10 @@ def correct_find(lista_partes_alu: list, lista_partes_sol: list) -> list:
 	lista_opt_alu = [t for t in lista_partes_alu[1:] if (t.startswith("-") and not t[1].isdigit())]
 	lista_opt_sol = [t for t in lista_partes_sol[1:] if (t.startswith("-") and not t[1].isdigit())]
 
-	# si aparece una opción sin argumento, será False indicando que el comando está incompleto, y devolveremos WRONG_OPTIONS
+	# Si aparece una opción sin argumento, será False indicando que el comando está incompleto, y devolveremos WRONG_OPTIONS
 	complete = True 
 
-	# Como las opciones del find van acompañadas cada una de su correspondiente argumento, mapearemos cada opción con su argumento asociado en alu y sol (en ese orden)
+	# Como las opciones del find van acompañadas cada una de su correspondiente argumento, mapearemos cada opción con su argumento asociado en alu y sol (en ese orden dentro de una lista)
 	map_opt_arg = defaultdict(list)
 	for i in range(len(lista_partes_alu)):
 		if lista_partes_alu[i] in lista_opt_alu:
@@ -361,16 +361,20 @@ def correction2(resp_alumno: str, solution: str) -> list:
 	if lista_partes_alu[0] != lista_partes_sol[0]:
 		lista_correcciones.append(CommandStatus.WRONG_COMMAND)
 	
-	elif lista_partes_alu[0] == 'git':  # Comando de git detectado
+	# Tratamiento aislado de comandos de git
+	elif lista_partes_alu[0] == 'git':  
+
 		# Es commit
 		if lista_partes_sol[1] == 'commit':
 			return check_commit(lista_partes_alu[1:], lista_partes_sol[1:])
+		
 		# No es commit
 		else:
 			# corregir como si el comando no tuviera el 'git' delante (para que, por ejemplo, si el alumno usa git add cuando tiene que usar git push, el fallo sea WRONG_COMMAND)
 			return correction2(" ".join(lista_partes_alu[1:]), " ".join(lista_partes_sol[1:]))
 			
-	elif lista_partes_sol[0] == 'find':  # Comando find detectado -> tratar por separado porque plantea problemas
+	# Tratamiento aislado de comandos "find"
+	elif lista_partes_sol[0] == 'find':  
 		return correct_find(lista_partes_alu, lista_partes_sol)
 	
 	
@@ -413,6 +417,7 @@ def compare_commands(dict_bloques: defaultdict, detail=False):
 					try:
 						list_status = correction2(resp_alumno, solution)
 					except IndexError:
+						# Si el comando de una pregunta no se puede corregir, informar de ello
 						print(pregunta, lista)
 
 					for status in list_status:    
