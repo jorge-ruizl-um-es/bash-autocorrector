@@ -254,7 +254,7 @@ def check_arguments(lista_partes_alu: list, lista_partes_sol: list) -> CommandSt
 
 		# Limpiar el ./ en caso de que esté en args_sol + procesar los elementos de la lista
 		for i in range(len(args_sol)):
-			arg_sol = args_sol[i].strip('\\n').strip('\\"').strip(' ') 
+			arg_sol = args_sol[i].strip('\\n').strip(' ').replace(r'\"', '"')
 
 			if arg_sol.startswith('./'):
 				arg_sol = arg_sol[2:]
@@ -263,7 +263,7 @@ def check_arguments(lista_partes_alu: list, lista_partes_sol: list) -> CommandSt
 
 		for i in range(len(args_alu)):
 			# Obtener argumentos uno a uno, sin tener en cuenta saltos de línea, comillas...
-			arg_alu = args_alu[i].strip('\\n').strip('\\"').strip(' ') 
+			arg_alu = args_alu[i].strip('\\n').strip(' ').replace(r'\"', '"')
 			
 			# Limpiar el ./ en caso de que esté
 			if arg_alu.startswith('./'):
