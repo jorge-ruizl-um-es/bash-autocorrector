@@ -13,8 +13,8 @@ Conviene ejecutar esto desde el directorio "scripts"
 '''
 
 # CAMBIAR CONSTANTES CON LAS RUTAS/NOMBRES DE DIRECTORIO DESEADOS
-RUTA_SOL = "examen-resuelto-2024"
-DIR_EXAMS = "dir_exams"
+RUTA_SOL = "examen-resuelto"
+DIR_EXAMS = "../dir_exams"
 OUTPUT_FOLDER = "../pruebas-script-correccion/outputs"
 
 # Diccionario en el que cada clave será el id (nombre) del alumno, y el valor será el diccionario en el que se indica, en cada bloque, cuántas preguntas de cada tipo tiene
@@ -62,7 +62,7 @@ estados = [str(status) for status in CommandStatus]
 if os.path.exists(OUTPUT_FOLDER):
 	shutil.rmtree(OUTPUT_FOLDER)
 
-os.mkdir(OUTPUT_FOLDER)
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)   # crea toda la ruta; no falla si ya existe
 
 
 # -----------------------------------------------------------------------------------------

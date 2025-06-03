@@ -1,0 +1,3 @@
+"Alumno","find image document  -name ""*e*e*"" -type f -size -700k -size +600k","find . -type d -name ""??[fg]""","grep -lw id document/txt/*","grep -nr ergo.$ .","grep -l ""^I"" document/*t*/*[1-3]*"
+"sobresaliente","find image document -type f -name \""*e*e*\"" -size +600k -size -700k","find . -type d -name \""??[fg]\""","grep -wl \""id\"" document/txt/*","grep -rwnH \""ergo.$\"" .","grep -l \""^I\""  document/*t*/*[1-3]*"
+"suspenso","find image document -type f \""*e*e*\"" -size +600k -size -700k","find ./\""[a-z][a-z][f-g]\""","grep -w id document/txt/*","grep ergo ./*","grep *t* document/"

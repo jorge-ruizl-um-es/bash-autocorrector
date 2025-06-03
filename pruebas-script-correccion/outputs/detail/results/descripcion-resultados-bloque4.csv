@@ -1,0 +1,3 @@
+"Alumno","git restore AUTHORS; cat AUTHORS","git diff README; git restore README","git restore --staged doc","cp ../sample_files/LICENSE . ; git add LICENSE; git commit -m ""Añadiendo LICENSE""","git log README* | grep Author","git rm README; git status; git commit -m ""Eliminando README"""
+"sobresaliente","CORRECT","CORRECT","WRONG_ARGS","WRONG_ARGS","WRONG_ARGS, WRONG_OPTIONS","CORRECT"
+"suspenso","WRONG_PIPE","WRONG_PIPE","WRONG_ARGS","WRONG_ARGS, WRONG_PIPE, WRONG_COMMAND","WRONG_ARGS, WRONG_PIPE","WRONG_PIPE"

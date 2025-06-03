@@ -67,9 +67,8 @@ def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
 	dict_bloques = defaultdict(lambda: defaultdict(list))
 
 	for bloque in range(1, NUM_BLOQUES+1):
-		# Podria usarse tambien "grep -E"
-		codigo_bash_2 = f"""
-		diff -u {ruta_exam}/examen-fc-bloque{str(bloque)}.ipynb {ruta_sol}/examen-fc-bloque{str(bloque)}.ipynb | egrep -A4 "#\s*I|#\s*V";
+		codigo_bash_2 = rf"""
+		diff -u {ruta_exam}/examen-fc-bloque{str(bloque)}.ipynb {ruta_sol}/examen-fc-bloque{str(bloque)}.ipynb | grep -E -A4 "#\s*I|#\s*V";
 		"""
 
 		resultado = subprocess.run(codigo_bash_2, shell=True, capture_output=True, text=True)
@@ -158,19 +157,27 @@ def divide_pipeline_composed(resp_alumno:str, solution:str) -> list:
 	# Limpieza de espacios iniciales o final del comando
 	for i in range(len(lista_comandos_alu)):
 		lista_comandos_alu[i] = lista_comandos_alu[i].strip()
+
+	for i in range(len(lista_comandos_sol)):
 		lista_comandos_sol[i] = lista_comandos_sol[i].strip()
 
 	# Corregir cada comando por separado
 	for i in range(len(lista_comandos_alu)):
-		alu = lista_comandos_alu[i]
-		sol = lista_comandos_sol[i]
+		try:
+			alu = lista_comandos_alu[i]
+			sol = lista_comandos_sol[i]
 
-		if len(alu)==0:
-			# Se ha puesto la separación sin nada después
-			score = [CommandStatus.WRONG_PIPE]
-		else:
-			# Devuelve lista con los estados de un comando
-			score = correction2(alu, sol)
+			if len(alu)==0:
+				# Se ha puesto la separación sin nada después
+				score = [CommandStatus.WRONG_PIPE]
+			else:
+				# Devuelve lista con los estados de un comando
+				score = correction2(alu, sol)
+			
+		except IndexError:
+			# Si la comparación de los dos comandos ha dado error, se debe a que estamos en el estado WRONG_PIPE
+			continue
+		
 		set_scores = set_scores.union(set(score))
 	
 	# Si ha detectado en los comandos algún estado además de CORRECT, entonces debemos eliminar el CORRECT que pueda haber
@@ -196,13 +203,18 @@ def correct_subshell(resp_alumno:str, solution:str) -> list:
 	if len(separacion) != len(separacion_sol):
 		set_correcciones_salida.add(CommandStatus.WRONG_SUBSHELL)
 
-	result_externo = correction2(separacion[0].strip(), separacion_sol[0].strip())
-	result_interno = correction2(separacion[1].strip().strip(')'), separacion[1].strip().strip(')'))
-	set_correcciones_salida = set_correcciones_salida.union(set(result_externo))
-	set_correcciones_salida = set_correcciones_salida.union(set(result_interno))
+	try:
+		result_externo = correction2(separacion[0].strip(), separacion_sol[0].strip())
+		result_interno = correction2(separacion[1].strip().strip(')'), separacion[1].strip().strip(')'))
+		set_correcciones_salida = set_correcciones_salida.union(set(result_externo))
+		set_correcciones_salida = set_correcciones_salida.union(set(result_interno))
 
-	if len(set_correcciones_salida) > 1 and CommandStatus.CORRECT in set_correcciones_salida:
-		set_correcciones_salida.remove(CommandStatus.CORRECT)
+		if len(set_correcciones_salida) > 1 and CommandStatus.CORRECT in set_correcciones_salida:
+			set_correcciones_salida.remove(CommandStatus.CORRECT)
+
+	except IndexError:
+		# Si la comparación de los dos comandos ha dado error, se debe a que estamos en el estado WRONG_SUBSHELL
+		pass
 		
 	return list(set_correcciones_salida)
 
@@ -418,6 +430,7 @@ def compare_commands(dict_bloques: defaultdict, detail=False):
 						list_status = correction2(resp_alumno, solution)
 					except IndexError:
 						# Si el comando de una pregunta no se puede corregir, informar de ello
+						print("Error en la corrección del siguiente comando:", end="")
 						print(pregunta, lista)
 
 					for status in list_status:    
@@ -439,12 +452,12 @@ if __name__ == "__main__":
 	ruta_exam_nuevo = './dir_exams/examen-suspenso'
 	ruta_sol_viejo = './examen-resuelto-2024'
 	ruta_sol_nuevo = './scripts_jorge/examen-resuelto'
-	comando_alu = 'touch copyright;'
-	comando_sol = 'grep Copyright LICENSE > copyright; echo "Nombre Apellidos" >> copyright'
+	comando_alu = 'cat NEWS | grep \\"editor\\" | tail -n2  > noticias'
+	comando_sol = 'grep \\"editor\\" NEWS | tail -n2 > noticias'
 	#print(correction2(comando_alu, comando_sol))
 	
 
-	dict_bloques = execute_diff(ruta_exam_viejo, ruta_sol_viejo)
+	# dict_bloques = execute_diff(ruta_exam_viejo, ruta_sol_viejo)
 	
 	''' 
 	for bloque in dict_bloques:
@@ -452,10 +465,12 @@ if __name__ == "__main__":
 			print(f"{bloque}.{pregunta}: {respuestas}")
 	'''
 	
-	scores, dict_debug = compare_commands(dict_bloques, detail=True)
-	for (bloque, dict_preguntas) in dict_debug.items():
-		for (pregunta, lista) in dict_preguntas.items():
-			print(f'{bloque}.{pregunta}: {lista}\n')
+	#scores, dict_debug = compare_commands(dict_bloques, detail=True)
+	#for (bloque, dict_preguntas) in dict_debug.items():
+	#	for (pregunta, lista) in dict_preguntas.items():
+	#		print(f'{bloque}.{pregunta}: {lista}\n')
+
+	print(correction2(comando_alu, comando_sol))
 	
 	
 	

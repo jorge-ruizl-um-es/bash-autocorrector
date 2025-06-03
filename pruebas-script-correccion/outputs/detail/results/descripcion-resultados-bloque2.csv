@@ -1,0 +1,3 @@
+"Alumno","find image document  -name ""*e*e*"" -type f -size -700k -size +600k","find . -type d -name ""??[fg]""","grep -lw id document/txt/*","grep -nr ergo.$ .","grep -l ""^I"" document/*t*/*[1-3]*"
+"sobresaliente","CORRECT","CORRECT","CORRECT","WRONG_OPTIONS","WRONG_ARGS"
+"suspenso","WRONG_OPTIONS","WRONG_OPTIONS","WRONG_OPTIONS","WRONG_OPTIONS, WRONG_ARGS","WRONG_OPTIONS, WRONG_ARGS"
