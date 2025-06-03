@@ -5,7 +5,7 @@ from collections import defaultdict
 from enum import Enum
 import re       # para usar regex
 
-# OJO! Los exámenes de este año tienen 5, pero si corregimos alguno del año pasado, como el 5 es todo texto y no hay comandos, hay que poner 4!!!!
+# OJO! Los exámenes de 2025 5, pero si corregimos alguno del año pasado (2024), como el 5 es todo texto y no hay comandos, hay que poner 4!!!!
 # Poner el número de bloques que tiene el examen
 NUM_BLOQUES = 4
 

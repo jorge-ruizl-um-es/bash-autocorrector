@@ -27,8 +27,9 @@ dict_respuestas = extraer_bloques_solutions(RUTA_SOL)
 
 # Recorrer los exámenes de los alumnos para ir generando las correcciones (tanto en resumen en dict_alumnos, como en detalleen dict_alumnos_por_bloques)
 for exam_dir in os.listdir(DIR_EXAMS):
-	# Esta condición es para probar los exámenes viejos, para que no tenga en cuenta los de este año (el examen solucionado es distinto)
-	if 'G1' in exam_dir:
+
+	# Condición para trabajar con exámenes de 2024 o de 2025
+	if 'examen' in exam_dir:
 		id_alu = exam_dir.split("-", 1)[1]
 
 		# Obtener diccionario con las respuestas del alumno a cada pregunta y las respuestas correctas
