@@ -2,6 +2,24 @@
 Módulo en el que adaptamos las funciones básicas de correct_exam para poder aplicar lo mismo a la corrección de repositorios y entregas de alumnos, generando los mismos CSV finales.
 '''
 
+from collections import defaultdict
+import subprocess
+import re
+
+NUM_BLOQUES: int = 7
+
+def int_to_roman_cutrisimo(num: int) -> str:
+	if num == 1:
+		return "I"
+	elif num == 2:
+		return "II"
+	elif num == 3:
+		return "III"
+	elif num == 4:
+		return "IV"
+	else:
+		return "V"
+
 def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
 	"""
 	Dado el examen de un alumno (NUM_BLOQUES bloques), lee las respuestas junto con las del notebook con la solución.
@@ -36,7 +54,7 @@ def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
 		comandos = re.findall(patron, salida)
 		comandos_sol = re.findall(patron_sol, salida)
 		comandos_blank = re.findall(patron_blank, salida)
-		comandos_out = []  # lista de preguntas sin contestar en el bloque
+		comandos_out: list[int] = []  # lista de preguntas sin contestar en el bloque
 
 		# Caso extraño (en examen-suspenso hay una pregunta donde la solución no aparece en el diff, no sé por qué):
 		lista_bloques = salida.split('--\n')
@@ -78,3 +96,6 @@ def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
 	'''
 
 	return dict_bloques
+
+if __name__ == "__main__":
+	
