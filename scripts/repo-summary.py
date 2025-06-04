@@ -73,6 +73,7 @@ def get_git_commit_date_for_file(repo_path, filename):
         return None
 
 
+# Usar en correct_repo
 def find_repositories(base_dir):
     """Finds all repositories in the user subdirectories."""
     repo_dirs = []
@@ -132,6 +133,7 @@ def check_commit_deadline_for_file(repo_path, filename, date):
         #print(f"The file {filename} does not meet the deadline: {commit_date} > {date}.")
         return SubmissionStatus.LATE
 
+# Usar en correct_repo
 def locate_file_in_repo(repo_path, filename):
     """
     Locate a file in the repository, ignoring directories named "outputs".
@@ -152,6 +154,7 @@ def locate_file_in_repo(repo_path, filename):
 
     return file_paths
 
+# Usar en correct_repo
 def locate_relevant_files(repo_path, relevant_files):
     """
     Return a dictionary in which each relevant file is mapped to its route in the repository.
