@@ -1,7 +1,8 @@
 import nbformat
+import os
 
 
-def etiquetar_practica(bloque:str, fichero:str, ruta_base:str):
+def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
 	'''
 	Función para, dado un bloque, el nombre de un fichero, y una ruta base, etiquetar el fichero en dicho bloque tanto en las soluciones como en los repositorios de alumnos. 
 	
@@ -10,52 +11,71 @@ def etiquetar_practica(bloque:str, fichero:str, ruta_base:str):
 	Se buscará la solución en el directorio "practicas" dentro del directorio base".
 	'''
 
-
 	# Construir las rutas a partir de ruta_base (puede cambiar en función de la estructura de directorios personal)
+	ruta_alu = ruta_base+"entregas_alumnos/"
+	ruta_sol = ruta_base+f"practicas/P{str(bloque)}/{fichero}"
 
-	# Cargar los ficheros
-	with open(ruta_alu, 'r', encoding='utf-8') as f:
-		alumno_notebook = nbformat.read(f, as_version=4)
+	# Recorrer todos los repositorios que haya en ruta_alu
+	for user_dir in os.listdir(ruta_alu):
+        # construir ruta completa con la carpeta de usuario
+		user_path = os.path.join(ruta_alu, user_dir)
 
-	with open(ruta_sol, 'r', encoding='utf-8') as f:
-		soluciones_notebook = nbformat.read(f, as_version=4)
-          
-	
-	# Extraer las celdas de cada notebook
-	alumno_cells = alumno_notebook['cells']
-	soluciones_cells = soluciones_notebook['cells']
+        # comprobar que es un directorio que empieza por "jupyter-" 
+		if os.path.isdir(user_path) and user_dir.startswith("jupyter-"):
+			ruta_alu_completa = os.path.join(user_path, "fc-alumno", f"P{str(bloque)}", fichero)
 
-	# Revisar las celdas de las soluciones para etiquetar
-	solution_indices = []
-	for i, cell in enumerate(soluciones_cells):
-		if '#@solution@' in ''.join(cell['source'].splitlines()):
-			solution_indices.append(i)
+			# Comprobar que la ruta al notebook existe
+			if not os.path.exists(ruta_alu_completa):
+				print(f"No se encontró el notebook con ruta {ruta_alu_completa}")
+				continue
 
-	# Añadir etiquetas a las celdas
-	for i, solution_index in enumerate(solution_indices, 1):
-		# Etiquetar celdas en el notebook de soluciones
-		soluciones_cells[solution_index]['source'] = f"#I.{i}\n" + soluciones_cells[solution_index]['source']
-		
-		# Buscar la respuesta correspondiente en el notebook del alumno
-		# Asumir que las celdas corresponden por su orden
-		if solution_index < len(alumno_cells):
-			alumno_cells[solution_index]['source'] = f"#I.{i}\n" + alumno_cells[solution_index]['source']
+			# Cargar los ficheros
+			with open(ruta_alu_completa, 'r', encoding='utf-8') as f:
+				alumno_notebook = nbformat.read(f, as_version=4)
+
+			with open(ruta_sol, 'r', encoding='utf-8') as f:
+				soluciones_notebook = nbformat.read(f, as_version=4)
+				
+			
+			# PROCESADO
+			# Extraer las celdas de cada notebook
+			alumno_cells = alumno_notebook['cells']
+			soluciones_cells = soluciones_notebook['cells']
+
+			# Revisar las celdas de las soluciones para etiquetar
+			solution_indices = []
+			for i, cell in enumerate(soluciones_cells):
+				if '#@solution@' in ''.join(cell['source'].splitlines()):
+					solution_indices.append(i)
+
+			# Añadir etiquetas a las celdas
+			map_int_to_roman: dict[int, str] = {1:"I", 2:"II", 3:"III", 4:"IV", 5:"V", 6:"VI", 7:"VII", 8:"VIII", 9:"IX"}
+			num_etiqueta:str = map_int_to_roman[bloque]
+
+			for i, solution_index in enumerate(solution_indices, 1):
+				# Etiquetar celdas en el notebook de soluciones
+				soluciones_cells[solution_index]['source'] = f"#I.{i}\n" + soluciones_cells[solution_index]['source']
+				
+				# Buscar la respuesta correspondiente en el notebook del alumno
+				# Asumir que las celdas corresponden por su orden
+				if solution_index < len(alumno_cells):
+					alumno_cells[solution_index]['source'] = f"#I.{i}\n" + alumno_cells[solution_index]['source']
 
 
-	# Guardar los notebooks con las etiquetas añadidas
-	alumno_notebook['cells'] = alumno_cells
-	soluciones_notebook['cells'] = soluciones_cells
+			# Guardar los notebooks con las etiquetas añadidas
+			alumno_notebook['cells'] = alumno_cells
+			soluciones_notebook['cells'] = soluciones_cells
 
-	alumno_notebook_path = '/home/jorge/git_reps/bash-autocorrector/entregas_alumnos/jupyter-7fEZvEiEPC/fc-alumno/P1/practica1-introshell-ejercicios-etiquetados.ipynb'
-	soluciones_notebook_path = '/home/jorge/git_reps/bash-autocorrector/practicas/P1/practica1-introshell-ejercicios-etiquetados.ipynb'
+			alumno_notebook_path = '/home/jorge/git_reps/bash-autocorrector/entregas_alumnos/jupyter-7fEZvEiEPC/fc-alumno/P1/practica1-introshell-ejercicios-etiquetados.ipynb'
+			soluciones_notebook_path = '/home/jorge/git_reps/bash-autocorrector/practicas/P1/practica1-introshell-ejercicios-etiquetados.ipynb'
 
-	with open(alumno_notebook_path, 'w', encoding='utf-8') as f:
-		nbformat.write(alumno_notebook, f)
+			with open(alumno_notebook_path, 'w', encoding='utf-8') as f:
+				nbformat.write(alumno_notebook, f)
 
-	with open(soluciones_notebook_path, 'w', encoding='utf-8') as f:
-		nbformat.write(soluciones_notebook, f)
+			with open(soluciones_notebook_path, 'w', encoding='utf-8') as f:
+				nbformat.write(soluciones_notebook, f)
 
-	print(f"Etiquetado fichero {ruta_alu.split('/')[-1]}")
+			print(f"Etiquetado fichero {ruta_alu.split('/')[-1]}")
 
 
 if __name__ == "__main__":
