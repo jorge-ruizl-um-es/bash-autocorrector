@@ -20,10 +20,10 @@ def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
 
 	# Recorrer todos los repositorios que haya en ruta_alu
 	for user_dir in os.listdir(ruta_alu):
-        # construir ruta completa con la carpeta de usuario
+		# construir ruta completa con la carpeta de usuario
 		user_path = os.path.join(ruta_alu, user_dir)
 
-        # comprobar que es un directorio que empieza por "jupyter-" 
+		# comprobar que es un directorio que empieza por "jupyter-" 
 		if os.path.isdir(user_path) and user_dir.startswith("jupyter-"):
 			ruta_alu_completa = os.path.join(user_path, "fc-alumno", f"P{str(bloque)}", fichero)
 
@@ -46,23 +46,70 @@ def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
 			soluciones_cells = soluciones_notebook['cells']
 
 			# Revisar las celdas de las soluciones para etiquetar
-			solution_indices = []
+			solution_cells_info = []
 			for i, cell in enumerate(soluciones_cells):
-				if '#@solution@' in ''.join(cell['source'].splitlines()):
-					solution_indices.append(i)
+				if cell['cell_type'] == 'code' and '#@solution@' in ''.join(cell['source'].splitlines()):
+					# Obtener el código sin la etiqueta #@solution@
+					source_lines = cell['source'].splitlines()
+					clean_source = '\n'.join([line for line in source_lines if '#@solution@' not in line])
+					first_line = source_lines[0].replace('#@solution@', '').strip()
+					solution_cells_info.append({
+						'sol_index': i,
+						'first_line': first_line,
+						'clean_source': clean_source
+					})
 
 			# Añadir etiquetas a las celdas
 			map_int_to_roman: dict[int, str] = {1:"I", 2:"II", 3:"III", 4:"IV", 5:"V", 6:"VI", 7:"VII", 8:"VIII", 9:"IX"}
 			num_etiqueta:str = map_int_to_roman[bloque]
 
-			for i, solution_index in enumerate(solution_indices, 1):
+			# Para cada celda de solución, buscar la correspondiente en el notebook del alumno
+			for i, sol_cell_info in enumerate(solution_cells_info, 1):
+				solution_index = sol_cell_info['sol_index']
+				tag = f"#{num_etiqueta}.{i}"
+
 				# Etiquetar celdas en el notebook de soluciones
-				soluciones_cells[solution_index]['source'] = f"#{num_etiqueta}.{i}\n" + soluciones_cells[solution_index]['source']
+				soluciones_cells[solution_index]['source'] = f"{tag}\n" + soluciones_cells[solution_index]['source']
 				
-				# Buscar la respuesta correspondiente en el notebook del alumno
-				# Asumir que las celdas corresponden por su orden
-				if solution_index < len(alumno_cells):
-					alumno_cells[solution_index]['source'] = f"#{num_etiqueta}.{i}\n" + alumno_cells[solution_index]['source']
+				# Buscar celda correspondiente en el notebook del alumno
+				found = False
+				for j, alumno_cell in enumerate(alumno_cells):
+					if alumno_cell['cell_type'] != 'code':
+						continue
+						
+					# Comprobar si ya está etiquetada
+					if alumno_cell['source'].startswith(tag):
+						found = True
+						break
+						
+					# Obtener primera línea del alumno
+					alumno_source_lines = alumno_cell['source'].splitlines()
+					if not alumno_source_lines:
+						continue
+					alumno_first_line = alumno_source_lines[0].strip()
+					
+					# Comparar con la primera línea de la solución (sin etiquetas)
+					if alumno_first_line == sol_cell_info['first_line']:
+						# Etiquetar celda encontrada
+						alumno_cells[j]['source'] = f"{tag}\n{alumno_cell['source']}"
+						found = True
+						break
+				
+				# Si no se encontró por primera línea, buscar por contenido similar
+				if not found:
+					for j, alumno_cell in enumerate(alumno_cells):
+						if alumno_cell['cell_type'] != 'code':
+							continue
+							
+						# Comprobar si el código del alumno comienza como el de la solución
+						alumno_source = alumno_cell['source'].strip()
+						if alumno_source.startswith(sol_cell_info['clean_source'].split('\n')[0]):
+							alumno_cells[j]['source'] = f"{tag}\n{alumno_cell['source']}"
+							found = True
+							break
+				
+				if not found:
+					print(f"No se encontró celda correspondiente para {tag} en {ruta_alu_completa}")
 
 
 			# Guardar los notebooks con las etiquetas añadidas
@@ -70,8 +117,8 @@ def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
 			soluciones_notebook['cells'] = soluciones_cells
 
 			# Construcción de nuevas rutas
-			alumno_notebook_path = ruta_alu_completa[:-6] + "-etiquetados" + ruta_alu_completa[-6:]
-			soluciones_notebook_path = ruta_sol[:-6] + "-etiquetados" + ruta_sol[-6:]
+			alumno_notebook_path = ruta_alu_completa[:-6] + "-etiquetados2" + ruta_alu_completa[-6:]
+			soluciones_notebook_path = ruta_sol[:-6] + "-etiquetados2" + ruta_sol[-6:]
 
 			with open(alumno_notebook_path, 'w', encoding='utf-8') as f:
 				nbformat.write(alumno_notebook, f)
