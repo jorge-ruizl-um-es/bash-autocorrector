@@ -79,7 +79,7 @@ def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
 			with open(soluciones_notebook_path, 'w', encoding='utf-8') as f:
 				nbformat.write(soluciones_notebook, f)
 
-			print(f"Etiquetado fichero {ruta_alu.split('/')[-1]}")
+			print(f"Etiquetado fichero {ruta_alu_completa.split('/')[-1]}")
 
 
 if __name__ == "__main__":

@@ -5,37 +5,65 @@ Módulo en el que adaptamos las funciones básicas de correct_exam para poder ap
 from collections import defaultdict
 import subprocess
 import re
+import os
 
-NUM_BLOQUES: int = 7
+# CONSTANTE - diccionario con cada bloque a estudiar y los ficheros que contiene cada uno
+IMPORTANT_FILES = {
+			"1": "practica1-introshell-ejercicios.ipynb",
+			"2": "practica2-introgit-ejercicios.ipynb",
+			"3": "practica3-okteta-enteros-reales-ejercicios.ipynb", 
+			"4": "practica4a-compilacion-ejecucion-ejercicios.ipynb", 
+			"5a": "practica5a-ficheros-ejercicios.ipynb", 
+			"5b": "practica5b-busquedas-ejercicios.ipynb", 
+			"7a": "practica7a-procesos-ejercicios.ipynb", 
+			"7b": "practica7b-tuberias-ejercicios.ipynb"
+}
 
-def int_to_roman_cutrisimo(num: int) -> str:
-	if num == 1:
+
+# Funciones auxiliares "tontas" para la lectura 
+def str_to_roman_cutrisimo(num: str) -> str:
+	if "1" in num:
 		return "I"
-	elif num == 2:
+	elif "2" in num:
 		return "II"
-	elif num == 3:
+	elif "3" in num:
 		return "III"
-	elif num == 4:
+	elif "4" in num:
 		return "IV"
-	else:
+	elif "5" in num:
 		return "V"
+	elif "6" in num:
+		return "VI"
+	else:
+		return "VII"
+	
+def extract_block_from_str(num: str) -> int|None:
+	block = None
 
-def execute_diff(ruta_exam: str, ruta_sol: str) -> defaultdict|None:
+	for letra in num:
+		try:
+			block = int(letra)
+			return block
+		except ValueError:
+			continue
+
+def execute_diff(ruta_repo_alu: str, ruta_sol: str, important_files: dict[str, str] = IMPORTANT_FILES) -> defaultdict|None:
 	"""
-	Dado el examen de un alumno (NUM_BLOQUES bloques), lee las respuestas junto con las del notebook con la solución.
+	Dado el repositorio de un alumno, lee las respuestas a cada uno de los ejercicios de cada bloque junto con las del notebook con la solución.
 
 	Parámetros:
-		- ruta_exam (str): ruta a la carpeta que contiene el examen del alumno a corregir
-		- ruta_sol (str): ruta a la carpeta con el examen resuelto
+		- ruta_repo_alu (str): ruta a la carpeta que contiene el repositorio del alumno con los directorios correspondientes a cada bloque de prácticas y, dentro, los notebooks con sus entregas.
+		- ruta_sol (str): ruta a la carpeta con los ejercicios de las prácticas resueltos
+		- important_files (dict): diccionario en el que se indica el bloque de cada notebook a corregir, y el nombre del fichero en el que se tiene que encontrar.
 
 	Devuelve:
 		- Diccionario con la estructura --> {N: {M: [respuesta_alumno, solution]}}, donde N es el número de bloque, y M es el número de la pregunta de dicho bloque. Si el bloque tiene una pregunta 0, esta clave contendrá una lista de preguntas en blanco en el bloque, en formato str.
 	"""
 	dict_bloques = defaultdict(lambda: defaultdict(list))
 
-	for bloque in range(1, NUM_BLOQUES+1):
+	for bloque, archivo in important_files.items():
 		codigo_bash_2 = rf"""
-		diff -u {ruta_exam}/examen-fc-bloque{str(bloque)}.ipynb {ruta_sol}/examen-fc-bloque{str(bloque)}.ipynb | grep -E -A4 "#\s*I|#\s*V";
+		diff -u {ruta_repo_alu}/fc-alumno/P{str(extract_block_from_str(bloque))}/{archivo} {ruta_sol}/P{str(extract_block_from_str(bloque))}/{archivo} | grep -E -A4 "#\s*{str_to_roman_cutrisimo(bloque)}";
 		"""
 
 		resultado = subprocess.run(codigo_bash_2, shell=True, capture_output=True, text=True)
