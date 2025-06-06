@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+
 import nbformat
 import os
+import re
 
 
 def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
@@ -37,7 +40,7 @@ def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
 				soluciones_notebook = nbformat.read(f, as_version=4)
 				
 			
-			# PROCESADO
+			# PROCESAMIENTO
 			# Extraer las celdas de cada notebook
 			alumno_cells = alumno_notebook['cells']
 			soluciones_cells = soluciones_notebook['cells']
@@ -54,20 +57,21 @@ def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
 
 			for i, solution_index in enumerate(solution_indices, 1):
 				# Etiquetar celdas en el notebook de soluciones
-				soluciones_cells[solution_index]['source'] = f"#I.{i}\n" + soluciones_cells[solution_index]['source']
+				soluciones_cells[solution_index]['source'] = f"#{num_etiqueta}.{i}\n" + soluciones_cells[solution_index]['source']
 				
 				# Buscar la respuesta correspondiente en el notebook del alumno
 				# Asumir que las celdas corresponden por su orden
 				if solution_index < len(alumno_cells):
-					alumno_cells[solution_index]['source'] = f"#I.{i}\n" + alumno_cells[solution_index]['source']
+					alumno_cells[solution_index]['source'] = f"#{num_etiqueta}.{i}\n" + alumno_cells[solution_index]['source']
 
 
 			# Guardar los notebooks con las etiquetas añadidas
 			alumno_notebook['cells'] = alumno_cells
 			soluciones_notebook['cells'] = soluciones_cells
 
-			alumno_notebook_path = '/home/jorge/git_reps/bash-autocorrector/entregas_alumnos/jupyter-7fEZvEiEPC/fc-alumno/P1/practica1-introshell-ejercicios-etiquetados.ipynb'
-			soluciones_notebook_path = '/home/jorge/git_reps/bash-autocorrector/practicas/P1/practica1-introshell-ejercicios-etiquetados.ipynb'
+			# Construcción de nuevas rutas
+			alumno_notebook_path = ruta_alu_completa[:-6] + "-etiquetados" + ruta_alu_completa[-6:]
+			soluciones_notebook_path = ruta_sol[:-6] + "-etiquetados" + ruta_sol[-6:]
 
 			with open(alumno_notebook_path, 'w', encoding='utf-8') as f:
 				nbformat.write(alumno_notebook, f)
@@ -88,10 +92,14 @@ if __name__ == "__main__":
 			"practica4a-compilacion-ejecucion-ejercicios.ipynb", 
 			"practica5a-ficheros-ejercicios.ipynb", 
 			"practica5b-busquedas-ejercicios.ipynb", 
-			"practica6a-cache-boletin.ipynb", 
 			"practica7a-procesos-ejercicios.ipynb",
 			"practica7b-tuberias-ejercicios.ipynb"
 		]
 
 	# Rutas
 	ruta_base = '/home/jorge/git_reps/bash-autocorrector/'
+
+	# Llamada a la función para todos los bloques
+	for file in files:
+		bloque = int(re.findall(r'practica(\d+)', file)[0])
+		etiquetar_practica(bloque, file, ruta_base)
