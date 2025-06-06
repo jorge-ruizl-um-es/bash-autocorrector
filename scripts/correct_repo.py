@@ -7,16 +7,17 @@ import subprocess
 import re
 import os
 
+
 # CONSTANTE - diccionario con cada bloque a estudiar y los ficheros que contiene cada uno
 IMPORTANT_FILES = {
-			"1": "practica1-introshell-ejercicios.ipynb",
-			"2": "practica2-introgit-ejercicios.ipynb",
-			"3": "practica3-okteta-enteros-reales-ejercicios.ipynb", 
-			"4": "practica4a-compilacion-ejecucion-ejercicios.ipynb", 
-			"5a": "practica5a-ficheros-ejercicios.ipynb", 
-			"5b": "practica5b-busquedas-ejercicios.ipynb", 
-			"7a": "practica7a-procesos-ejercicios.ipynb", 
-			"7b": "practica7b-tuberias-ejercicios.ipynb"
+			"1": "practica1-introshell-ejercicios-etiquetados.ipynb",
+			"2": "practica2-introgit-ejercicios-etiquetados.ipynb",
+			"3": "practica3-okteta-enteros-reales-ejercicios-etiquetados.ipynb", 
+			"4": "practica4a-compilacion-ejecucion-ejercicios-etiquetados.ipynb", 
+			"5a": "practica5a-ficheros-ejercicios-etiquetados.ipynb", 
+			"5b": "practica5b-busquedas-ejercicios-etiquetados.ipynb", 
+			"7a": "practica7a-procesos-ejercicios-etiquetados.ipynb", 
+			"7b": "practica7b-tuberias-ejercicios-etiquetados.ipynb"
 }
 
 
@@ -66,14 +67,21 @@ def execute_diff(ruta_repo_alu: str, ruta_sol: str, important_files: dict[str, s
 		diff -u {ruta_repo_alu}/fc-alumno/P{str(extract_block_from_str(bloque))}/{archivo} {ruta_sol}/P{str(extract_block_from_str(bloque))}/{archivo} | grep -E -A4 "#\s*{str_to_roman_cutrisimo(bloque)}";
 		"""
 
+		# Comprobación de existencia de práctica en el repositorio del alumno
+		if not os.path.exists(os.path.join(ruta_repo_alu, "fc-alumno", f"P{str(extract_block_from_str(bloque))}", archivo)):
+			print(f"El alumno {ruta_repo_alu.split('jupyter-')[-1]} no ha entregado la práctica {archivo}")
+			continue
+		
+		# Ejecución del diff
 		resultado = subprocess.run(codigo_bash_2, shell=True, capture_output=True, text=True)
 		if resultado.stderr:
 			print("Lectura de datos errónea: ")
 			print(resultado.stderr)
 			return None
 		salida = resultado.stdout
-		#print(salida)
-
+		print(salida)
+		
+	'''
 		roman = int_to_roman_cutrisimo(bloque)
 		patron = rf'\"#\s*{roman}\.\d+\\n\",\n- *\"(.*?)\",*\n'
 		patron_sol = r'\+.*?"(.*?)\s+#@solution@\"\n'
@@ -115,15 +123,12 @@ def execute_diff(ruta_repo_alu: str, ruta_sol: str, important_files: dict[str, s
 		
 		# Meter preguntas ignoradas como en blanco (sus números)
 		dict_bloques[bloque][0] += comandos_out
-	
-	'''
-	# DEBUG
-	for bloque in range(1,NUM_BLOQUES+1):
-		for (preg, lista) in dict_bloques[bloque].items():
-			print(f"{bloque}.{preg}: {lista}")
-	'''
 
 	return dict_bloques
+	'''
 
 if __name__ == "__main__":
-	
+	ruta_repo_alu = "/home/jorge/git_reps/bash-autocorrector/entregas_alumnos/jupyter-7fEZvEiEPC"
+	ruta_sol = "/home/jorge/git_reps/bash-autocorrector/practicas"
+
+	execute_diff(ruta_repo_alu, ruta_sol)
