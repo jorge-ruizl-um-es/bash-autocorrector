@@ -450,14 +450,11 @@
 +    "cd                #@solution@"
     ]
 --
--    "#II.28\n",
--    "# Muestra el estado del árbol de trabajo\n",
+     "#II.22\n",
+     "# Muestra el estado del árbol de trabajo\n",
 -    "git status"
-+    "#II.22\n",
-+    "# Muestra el estado del árbol de trabajo (en el caso de que muestre un error, puedes comentar la línea)\n",
 +    "# git status                 #@solution@"
     ]
-   },
 --
      "#II.23\n",
      "# Entrar en el directorio `test-repo` donde hemos creado el repositorio.\n",
@@ -489,8 +486,7 @@
 +    "git commit hosts -m \"Añadiendo fichero hosts\"                 #@solution@"
     ]
 --
--    "#II.76\n",
-+    "#II.28\n",
+     "#II.28\n",
      "# Muestra el estado del árbol de trabajo\n",
 -    "git status"
 +    "git status                 #@solution@"
