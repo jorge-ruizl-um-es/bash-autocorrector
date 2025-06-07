@@ -1,0 +1,1992 @@
+     "#I.1\n",
+     "# Cámbiate al directorio raíz. \n",
+-    "cd /"
++    "cd /                                                         #@solution@"
+    ]
+--
+     "#I.2\n",
+     "# Lista el contenido de /\n",
+-    "ls"
++    "ls                                                         #@solution@ "
+    ]
+--
+     "#I.3\n",
+     "# Cámbiate al directorio `home`, que es un subdirectorio inmediato de /\n",
+-    "cd home"
++    "cd home                                                         #@solution@"
+    ]
+--
+     "#I.4\n",
+     "# Lista su contenido del directorio actual\n",
+-    "ls"
++    "ls                                                         #@solution@"
+    ]
+--
+     "#I.5\n",
+     "# Sube al directorio padre del directorio de trabajo actual\n",
+     "# En este caso, irás de vuelta a “/”.\n",
+-    "cd .."
++    "cd ..                                                         #@solution@"
+--
+     "#I.6\n",
+     "# Cámbiate a tu directorio de usuario de la forma más rápida posible  \n",
+-    "cd"
++    "cd                                                         #@solution@"
+    ]
+--
+     "#I.7\n",
+     "# Lista el contenido del directorio actual\n",
+-    "ls"
++    "ls                                                         #@solution@"
+    ]
+--
+     "#I.8\n",
+     "# Cambia directamente desde el directorio actual (directorio \n",
+     "# personal) hasta el directorio raíz, usando rutas relativas\n",
+-    "cd ../../"
++    "cd ../..                                                         #@solution@"
+--
+     "#I.9\n",
+     "# Regresa *de la forma más rápida posible* al directorio donde\n",
+     "# te encontrabas antes de último cambio de directorio:\n",
+-    "cd"
++    "cd -                                                         #@solution@"
+--
+     "#I.10\n",
+     "# Cámbiate al directorio raíz\n",
+-    "cd /"
++    "cd /                                                         #@solution@"
+    ]
+--
+     "#I.11\n",
+     "# Ahora entra en el subdirectorio `etc` con una ruta relativa\n",
+-    "cd etc"
++    "cd etc                                                         #@solution@"
+    ]
+--
+     "#I.12\n",
+     "# Usa una ruta para cambiar al directorio `etc` que hay en el directorio raíz,\n",
+     "# sin importar en qué parte del sistema de ficheros te encuentres en ese momento\n",
+-    "cd ../../etc"
++    "cd /etc                                                         #@solution@"
+--
+     "#I.13\n",
+     "# Usando dicho atajo (~), cámbiate directamente al directorio `desktop` que \n",
+     "# hay en tu carpeta personal\n",
+-    "cd ~/desktop"
++    "cd ~/desktop                                                         #@solution@"
+--
+     "#I.14\n",
+     "# Ahora lista el contenido del subdirectorio `downloads` que hay en tu\n",
+     "# directorio personal, usando su **ruta absoluta**.\n",
+-    "ls ../downloads"
++    "ls ~/downloads                                                         #@solution@"
+--
+     "#I.15\n",
+     "# Crea un directorio llamado dirvacio\n",
+-    "mkdir dirvacio"
++    "mkdir dirvacio                                                      #@solution@"
+    ]
+--
+     "#I.16\n",
+     "# Entra en dirvacio\n",
+-    "cd dirvacio"
++    "cd dirvacio                                                      #@solution@"
+    ]
+--
+     "#I.17\n",
+     "# Lista su contenido, incluyendo todos los ficheros\n",
+-    "ls -a"
++    "ls -a                                                      #@solution@"
+    ]
+--
+     "#I.18\n",
+     "# Cámbiate al directorio padre del actual\n",
+-    "cd ../"
++    "cd ..                                                      #@solution@"
+    ]
+--
+     "#I.19\n",
+     "# Elimina el directorio dirvacio\n",
+-    "rm -r dirvacio"
++    "rmdir dirvacio                                                      #@solution@"
+    ]
+--
+     "#I.20\n",
+     "# Sin cambiarte de directorio, haz un listado de tu directorio personal\n",
+     "# mostrando **todos** los ficheros, y usando la **ruta relativa**\n",
+-    "ls -a ../"
++    "ls -a ..                                                        #@solution@"
+--
+     "#I.21\n",
+     "# Situate en tu directorio personal utilizando su ruta absoluta\n",
+-    "cd /home/jupyter-hwel0WHDjR"
++    "cd ~                                                         #@solution@"
+    ]
+--
+     "#I.22\n",
+     "# Cambia al directorio \"nano\" que hay dentro de \"ficheros_ejemplo\"\n",
+-    "cd ficheros_ejemplo/nano"
++    "cd ficheros_ejemplo/nano                                                         #@solution@"
+    ]
+--
+     "#I.23\n",
+     "# Haz un listado del directorio actual mostrando los ficheros ocultos\n",
+-    "ls -all"
++    "ls                                                         #@solution@"
+    ]
+--
+     "#I.24\n",
+     "# Haz un listado del directorio padre\n",
+-    "ls ../"
++    "ls ..                                                         #@solution@"
+    ]
+--
+     "#I.25\n",
+     "# Cambia al directorio \"src\"\n",
+-    "cd src"
++    "cd src                                                         #@solution@"
+    ]
+--
+     "#I.26\n",
+     "# Muestra el contenido del fichero README dentro de \"nano\"\n",
+-    "ls ../README"
++    "cat ../README                                                         #@solution@"
+    ]
+--
+     "#I.27\n",
+     "# Cambia al directorio padre\n",
+-    "cd .."
++    "cd ..                                                         #@solution@"
+    ]
+--
+     "#I.28\n",
+     "# Muestra el contenido completo del fichero TODO dentro de \"nano\"\n",
+-    "ls -a TODO"
++    "cat TODO                                                         #@solution@"
+    ]
+--
+     "#I.29\n",
+     "# Ahora vamos a usar los ficheros de \"sample_files\"\n",
+     "# Empieza cambiando al directorio \"sample_files\" desde tu directorio de trabajo actual\n",
+-    "cd ../sample_files"
++    "cd ../sample_files                                                         #@solution@"
+--
+     "#I.30\n",
+     "# Cambia al subdirectorio \"txt\" , situado en \"document\"\n",
+-    "cd document/txt"
++    "cd document/txt                                                         #@solution@"
+    ]
+--
+     "#I.31\n",
+     "# Guarda una copia del fichero \"sample1.txt\" llamada \"copia_sample1.txt\" en el mismo directorio\n",
+-    "cp sample1.txt copia_sample1.txt"
++    "cp sample1.txt copia_sample1.txt                                      #@solution@"
+    ]
+--
+-    "#I.40\n",
+     "# Lista el contenido del directorio actual\n",
+     "ls"
+    ]
+   },
+--
+     "#I.32\n",
+     "# Muestra el contenido del directorio \"pdf\"\n",
+-    "ls ../pdf"
++    "ls ../pdf                                                         #@solution@"
+    ]
+--
+     "#I.33\n",
+     "# Haz un listado largo del directorio \"xls\"\n",
+-    "ls -l ../xls"
++    "ls -l ../xls                                                         #@solution@"
+    ]
+--
+     "#I.34\n",
+     "# Vuelve al último directorio en el que has estado (nota: sin utilizar su ruta relativa o absoluta en el comando)\n",
+-    "cd .."
++    "cd -                                                        #@solution@"
+    ]
+--
+     "#I.35\n",
+     "# Cámbiate al directorio \"jpg\" situado en \"image\" utilizando su ruta absoluta\n",
+-    "cd ../image/jpg"
++    "cd ~/ficheros_ejemplo/sample_files/image/jpg                                                         #@solution@"
+    ]
+--
+     "#I.36\n",
+     "# Haz un listado del directorio \"png\"\n",
+-    "ls ../png"
++    "ls ../png                                                         #@solution@"
+    ]
+--
+     "#I.37\n",
+     "# Haz un listado del directorio \"mp4\" situado dentro de \"videos\"\n",
+-    "ls ../../video/mp4"
++    "ls ../../video/mp4                                                         #@solution@"
+    ]
+--
+     "#I.38\n",
+     "# Vuelve al directorio \"ficheros_ejemplo\"\n",
+-    "cd ../../../"
++    "cd ../../..                                                         #@solution@"
+    ]
+--
+     "#I.39\n",
+     "# Crea un directorio llamado prac1\n",
+-    "mkdir prac1"
++    "mkdir prac1                                                         #@solution@"
+    ]
+--
++    "#I.40\n",
+     "# Lista el contenido del directorio actual\n",
+-    "ls"
++    "ls                                                         #@solution@"
+    ]
+--
+     "#I.41\n",
+     "# Cámbiate al directorio que acabas de crear\n",
+-    "cd prac1"
++    "cd prac1                                                         #@solution@"
+    ]
+--
+     "#I.42\n",
+     "# Crea en el directorio actual un fichero vacío que se llame \"fichero.txt\"\n",
+-    "touch fichero.txt"
++    "touch fichero.txt                                                         #@solution@"
+    ]
+--
+     "#I.43\n",
+     "# lista de forma detallada este fichero\n",
+-    "ls -a fichero.txt"
++    "ls -l fichero.txt                                                         #@solution@"
+    ]
+--
+     "#I.44\n",
+     "# Vuelve a tu directorio personal con una ruta relativa.\n",
+-    "cd"
++    "cd ../..                                                         #@solution@"
+    ]
+--
+     "#I.45\n",
+     "# Copia el fichero \"fichero.txt\" del directorio prac1 que acabas de crear en tu directorio actual\n",
+-    "cp ficheros_ejemplo/prac1/fichero.txt ."
++    "cp ficheros_ejemplo/prac1/fichero.txt .                                 #@solution@"
+    ]
+--
+     "#I.46\n",
+     "# Haz un listado largo del fichero que acabas de copiar (fichero.txt)\n",
+     "# que muestre su nombre, tamaño, fecha de modificación, etc.\n",
+-    "ls -l fichero.txt"
++    "ls -l fichero.txt #@solution@"
+--
+     "#I.48\n",
+     "# Lista el contenido del directorio ficheros_ejemplo\n",
+-    "ls ficheros_ejemplo"
++    "ls ficheros_ejemplo                #@solution@"
+    ]
+--
+     "#I.49\n",
+     "# Sin cambiar de directorio, cambia el nombre del fichero \"vacio\"\n",
+     "# para que pase a llamarse \"empty\", y siga dentro de \"ficheros_ejemplo\"\n",
+-    "mv vacio empty"
++    "mv ficheros_ejemplo/vacio    ficheros_ejemplo/empty                       #@solution@"
+--
+     "#I.50\n",
+     "# Lista el contenido del directorio ficheros_ejemplo\n",
+-    "ls ficheros_ejemplo"
++    "ls ficheros_ejemplo                #@solution@"
+    ]
+--
+     "#I.51\n",
+     "# Borra el directorio prac1 \n",
+-    "rm -r ficheros_ejemplo/prac1"
++    "rm -r ficheros_ejemplo/prac1/                                           #@solution@"
+    ]
+--
+     "#I.52\n",
+     "# Lista el contenido del directorio ficheros_ejemplo\n",
+-    "ls ficheros_ejemplo"
++    "ls ficheros_ejemplo                                                 #@solution@"
+    ]
+--
+     "#I.53\n",
+     "# Borra el directorio \"ficheros_ejemplo\" de tu directorio personal utilizando su ruta absoluta\n",
+-    "rm -r ficheros_ejemplo"
++    "rm -rf ~/ficheros_ejemplo           #@solution@"
+    ]
+
+-    "#II.80\n",
+-    "#II.73\n",
+-    "#II.53\n",
+     "# Sitúate en tu directorio de inicio de usuario\n",
+     "cd"
+    ]
+   },
+--
+     "#II.1\n",
+     "# Crea un directorio llamado \"test-repo\"\n",
+-    "mkdir test-repo"
++    "mkdir test-repo                                                         #@solution@"
+    ]
+--
+     "#II.2\n",
+     "# Accede al directorio que acabas de crear\n",
+-    "cd test-repo"
++    "cd test-repo                                                         #@solution@"
+    ]
+--
+     "#II.3\n",
+     "# Crea un repositorio vacío\n",
+-    "git init"
++    "git init                                                         #@solution@"
+    ]
+--
+     "#II.4\n",
+     "# Muestra el contenido del directorio actual.\n",
+     "# NOTA:: Usa la opción adecuada para mostrar **TODOS** \n",
+     "# los ficheros y directorios (incluyendo los ocultos)\n",
+-    "ls -a"
+--
+     "#II.5\n",
+     "# Muestra el contenido del subdirectorio \".git\"\n",
+-    "ls .git"
++    "ls .git                                                         #@solution@"
+    ]
+--
+     "#II.6\n",
+     "# Crea un fichero vacío llamado AUTHORS\n",
+-    "touch AUTHORS"
++    "touch AUTHORS                                                         #@solution@"
+    ]
+--
+     "#II.7\n",
+     "# Muestra el estado del árbol de trabajo y\n",
+     "# observa en qué estado está el fichero AUTHORS\n",
+-    "git status"
++    "git status                                                         #@solution@"
+--
+     "#II.8\n",
+     "# Crea un directorio llamado practica2\n",
+-    "mkdir practica2"
++    "mkdir practica2                                                         #@solution@"
+    ]
+--
+     "#II.9\n",
+     "# Crea otro fichero vacío llamado \"lista_comandos.txt\" \n",
+     "# en el directorio `practica2`\n",
+-    "touch practica2/lista_comandos.txt"
++    "touch practica2/lista_comandos.txt                                                         #@solution@"
+--
+     "#II.10\n",
+     "# Muestra el estado del árbol de trabajo y\n",
+     "# observa en qué estado está el fichero AUTHORS\n",
+-    "git status"
++    "git status                                                        #@solution@"
+--
+     "#II.11\n",
+     "# Añade el fichero AUTHORS (actualmente vacío) al índice\n",
+-    "git add AUTHORS"
++    "git add AUTHORS                                                         #@solution@"
+    ]
+--
+     "#II.12\n",
+     "# Muestra el estado del árbol de trabajo y observa\n",
+     "# el nuevo estado del fichero AUTHORS\n",
+-    "git status"
++    "git status                                                         #@solution@"
+--
+     "#II.13\n",
+     "# Confirma los cambios al repositorio. Recuerda usar\n",
+     "# la opción -m seguida del mensaje de commit entrecomillado\n",
+     "# (p.ej., \"añadiendo fichero con autores vacío\")\n",
+-    "git commit -m \"Confirmando AUTHORS\""
+--
+     "#II.14\n",
+     "# Muestra el estado del árbol de trabajo\n",
+-    "git status"
++    "git status                 #@solution@"
+    ]
+--
+     "#II.15\n",
+     "# Muestra los cambios en el fichero `AUTHORS`\n",
+-    "git diff"
++    "git diff AUTHORS                 #@solution@"
+    ]
+--
+     "#II.16\n",
+     "# Deshaz los cambios en el fichero `AUTHORS`\n",
+-    "git restore AUTHORS"
++    "git restore AUTHORS                 #@solution@"
+    ]
+--
+     "#II.17\n",
+     "# Muestra el contenido del fichero `AUTHORS`\n",
+-    "cat AUTHORS"
++    "cat AUTHORS                 #@solution@"
+    ]
+--
+     "#II.18\n",
+-    "git add AUTHORS"
++    "git add AUTHORS                 #@solution@"
+    ]
+   },
+--
+     "#II.19\n",
+-    "git commit -m \"Modificando AUTHORS\""
++    "git commit -m \"Añadiendo nombre del autor\"                 #@solution@"
+    ]
+   },
+--
+     "#II.20\n",
+     "# Muestra al registro de *commits* al repositorio:\n",
+-    "git log -p"
++    "git log -p                #@solution@"
+    ]
+--
+     "#II.21\n",
+     "# Regresa a tu directorio personal (padre del actual).\n",
+-    "cd"
++    "cd                #@solution@"
+    ]
+--
+-    "#II.28\n",
+-    "# Muestra el estado del árbol de trabajo\n",
+-    "git status"
++    "#II.22\n",
++    "# Muestra el estado del árbol de trabajo (en el caso de que muestre un error, puedes comentar la línea)\n",
++    "# git status                 #@solution@"
+    ]
+   },
+--
+     "#II.23\n",
+     "# Entrar en el directorio `test-repo` donde hemos creado el repositorio.\n",
+-    "cd test-repo"
++    "cd test-repo                 #@solution@"
+    ]
+--
+     "#II.24\n",
+     "# Paso 1: Moverlo dentro del directorio del repositorio\n",
+-    "mv ../hosts ."
++    "mv ../hosts .                 #@solution@"
+    ]
+--
+     "#II.25\n",
+     "# Paso 2: mostrar estado del fichero (ignorado)\n",
+-    "git status"
++    "git status                 #@solution@"
+    ]
+--
+     "#II.26\n",
+     "# Paso 3: Añadirlo al índice\n",
+-    "git add hosts"
++    "git add hosts                 #@solution@"
+    ]
+--
+     "#II.27\n",
+     "# Paso 5: Confirmar nuevo fichero\n",
+-    "git commit -m \"Confirmando hosts\""
++    "git commit hosts -m \"Añadiendo fichero hosts\"                 #@solution@"
+    ]
+--
+-    "#II.76\n",
++    "#II.28\n",
+     "# Muestra el estado del árbol de trabajo\n",
+-    "git status"
++    "git status                 #@solution@"
+    ]
+--
+     "#II.29\n",
+-    "git add practica2/lista_comandos.txt"
++    "git add practica2/lista_comandos.txt                #@solution@"
+    ]
+   },
+--
+     "#II.30\n",
+-    "git status"
++    "git status                                  #@solution@"
+    ]
+   },
+--
+     "#II.31\n",
+-    "git commit -m \"Confirmando cambios en lista_comandos.txt\""
++    "git commit -m \"Añadiendo lista de comandos, ls\"                #@solution@"
+    ]
+   },
+--
+     "#II.32\n",
+     "# Muestra el estado de los ficheros del árbol de trabajo\n",
+-    "git status"
++    "git status                #@solution@"
+    ]
+--
+     "#II.33\n",
+     "# Muestra el estado de los ficheros del árbol de trabajo\n",
+-    "git status"
++    "git status                #@solution@"
+    ]
+--
+     "#II.34\n",
+     "# Muestra los cambios en el directorio `practica2`.\n",
+-    "git diff practica2"
++    "git diff practica2                #@solution@"
+    ]
+--
+     "#II.35\n",
+     "# Paso 1: añadir\n",
+-    "git add practica2/lista_comandos_git.txt"
++    "git add practica2/lista_comandos_git.txt                #@solution@"
+    ]
+--
+     "#II.36\n",
+     "# Paso 2: estado\n",
+-    "git status"
++    "git status                #@solution@"
+    ]
+--
+     "#II.37\n",
+     "# Paso 3: Confirmar\n",
+-    "git commit -m \"Confirmando lista_comandos_git.txt\""
++    "git commit -m \"Añadiendo lista de comandos de git, empiezo por init\"                #@solution@"
+    ]
+--
+     "#II.38\n",
+     "# Muestra el registro de commits hasta el momento\n",
+-    "git log"
++    "git log                #@solution@"
+    ]
+--
+     "#II.39\n",
+     "# Paso 1: añadir\n",
+-    "git add practica2/lista_comandos.txt"
++    "git add practica2/lista_comandos.txt                #@solution@"
+    ]
+--
+     "#II.40\n",
+     "# Paso 2: estado\n",
+-    "git status"
++    "git status                #@solution@"
+    ]
+--
+     "#II.41\n",
+-    "git diff --staged"
++    "git diff --staged               #@solution@"
+    ]
+   },
+--
+     "#II.42\n",
+     "# Paso 3: Sacar del índice\n",
+-    "git restore --staged practica2/lista_comandos.txt"
++    "git restore --staged practica2/lista_comandos.txt                #@solution@"
+    ]
+--
+     "#II.43\n",
+     "# Paso 4: Estado\n",
+-    "git status"
++    "git status                #@solution@"
+    ]
+--
+     "#II.44\n",
+     "# Muestra los cambios realizados en el fichero:\n",
+-    "git diff practica2/lista_comandos.txt"
++    "git diff                 #@solution@"
+    ]
+--
+     "#II.45\n",
+     "# Descartar cambios y volver a la última versión del repositorio\n",
+-    "git restore practica2/lista_comandos.txt"
++    "git restore practica2/lista_comandos.txt                #@solution@"
+    ]
+--
+     "#II.46\n",
+     "# Muestra el contenido del fichero con la lista de comandos del shell\n",
+-    "cat practica2/lista_comandos.txt"
++    "cat  practica2/lista_comandos.txt                #@solution@"
+    ]
+--
+     "#II.47\n",
+     "# Muestra el estado de los ficheros del árbol de trabajo\n",
+-    "git status"
++    "git status                #@solution@"
+    ]
+--
+     "#II.48\n",
+     "# Renombra el fichero en el repositorio\n",
+-    "git mv practica2/lista_comandos.txt practica2/lista_comandos_bash.txt"
++    "git mv practica2/lista_comandos.txt practica2/lista_comandos_bash.txt                #@solution@"
+    ]
+--
+     "#II.49\n",
+     "# Muestra el estado de los ficheros del árbol de trabajo\n",
+-    "git status"
++    "git status                #@solution@"
+    ]
+--
+     "#II.50\n",
+     "# Confirma el cambio de nombre en el repositorio\n",
+-    "git commit -m \"Confirmando el cambio de nombre\""
++    "git commit -m \"Renombrando fichero de comandos de bash\"                #@solution@"
+    ]
+--
++    "#II.51\n",
++    "# Paso 1: Borra\n",
++    "git rm practica2/lista_comandos_bash.txt                #@solution@"
+    ]
+   },
+--
++    "#II.52\n",
++    "# Paso 2: Estado\n",
++    "git status                #@solution@"
+    ]
+   },
+--
++    "#II.53\n",
++    "rm -rf ~/test-repo                #@solution@"
++   ]
+   },
+   {
+--
+-    "#II.58\n",
+     "ls -l $TMP/murcia"
+    ]
+   },
+   {
+--
+     "#II.54\n",
+     "# Clona el repositorio que hay en ~/tmp/geografia-murciana\n",
+-    "git clone ~/tmp/geografia-murciana"
++    "git clone ~/tmp/geografia-murciana                #@solution@"
+    ]
+--
+     "#II.55\n",
+     "# Accede al directorio de la copia local del repositorio que acabas de crear\n",
+-    "cd geografia-murciana"
++    "cd geografia-murciana                #@solution@"
++   ]
+--
+     "#II.56\n",
+     "# Haz un listado largo del contenido del directorio, incluyendo ficheros ocultos\n",
+-    "ls -a"
++    "ls -al                #@solution@"
+    ]
+--
+     "#II.57\n",
+     "# Muestra el registro de commits en una sola línea\n",
+-    "git log --oneline"
++    "git log --oneline                #@solution@"
+    ]
+--
++    "#II.58\n",
++    "ls -l $TMP/murcia                #@solution@"
+    ]
+   },
+   {
+--
+     "#II.60\n",
+     "# PASO 2\n",
+-    "git add murcia"
++    "git add murcia                #@solution@"
+    ]
+--
+     "#II.61\n",
+     "# PASO 3 (estado)\n",
+-    "git status"
++    "git status                #@solution@"
+    ]
+--
+     "#II.62\n",
+     "# Muestra lo que has añadido al índice\n",
+-    "git diff --staged"
++    "git diff --staged                 #@solution@"
+    ]
+--
+     "#II.63\n",
+     "# PASO 4 (confirma el cambio al repositorio)\n",
+-    "git commit -m \"Confirmando cambio al repositorio\""
++    "git commit -m \"Añadiendo municipios, rios y sierras\"                #@solution@"
+    ]
+--
+     "#II.64\n",
+     "# PASO 5: comprobación (registro)\n",
+-    "git log --oneline"
++    "git log --oneline                #@solution@"
+    ]
+--
+     "#II.65\n",
+     "# Envía tus cambios al repositorio remoto\n",
+-    "git push "
++    "git push                #@solution@"
+    ]
+--
+     "#II.66\n",
+     "# Vuelve a mostrar el registro de commits\n",
+-    "git log"
++    "git log --oneline                #@solution@"
+    ]
+--
+     "#II.67\n",
+     "# Elimina del repositorio el fichero \"sierras\" que está fuera del directorio \"murcia\"\n",
+     "# PASO 1\n",
+-    "git rm sierras "
++    "git rm sierras                #@solution@"
+--
+     "#II.68\n",
+     "# PASO 2 (estado)\n",
+-    "git status ."
++    "git status                #@solution@"
+    ]
+--
++    "#II.69\n",
++    "# PASO 3 (confirma). Mensaje a añadir: \"Eliminando fichero duplicado con sierras\"\n",
++    "git commit -m \"Eliminando fichero duplicado con sierras\"     #@solution@"
+    ]
+   },
+--
++    "#II.70\n",
++    "# PASO 4 (comprueba registro en una línea)\n",
++    "git log --oneline    #@solution@"
+    ]
+   },
+--
+     "#II.71\n",
+     "# Muestra el estado\n",
+-    "git status ."
++    "git status                #@solution@"
+    ]
+--
+     "#II.72\n",
+     "# Envía tus cambios al remoto\n",
+-    "git push"
++    "git push    #@solution@"
+    ]
+--
++    "#II.73\n",
++    "git status     #@solution@"
+    ]
+   },
+   {
+--
+     "#II.74\n",
+     "# Obtén los últimos cambios publicados en el repositorio remoto\n",
+-    "git pull"
++    "git pull     #@solution@"
+    ]
+--
++    "#II.75\n",
++    "# Muestra el registro de commits en una línea\n",
++    "git log --oneline     #@solution@"
++   ]
+   },
+--
++    "#II.76\n",
++    "# Muestra el estado\n",
++    "git status     #@solution@"
++   ]
+   },
+--
++    "#II.77\n",
++    "# Comenta la línea tras ejecutarla si obtienes un error\n",
++    "# git push     #@solution@"
+    ]
+   },
+--
+     "#II.78\n",
+     "# Muestra el contenido del fichero de municipios\n",
+-    "ls murcia/municipios"
++    "cat murcia/municipios     #@solution@"
+    ]
+--
+     "#II.79\n",
+     "# Obtén los últimos cambios en el repositorio remoto\n",
+-    "git pull"
++    "git pull     #@solution@"
+    ]
+--
++    "#II.80\n",
++    "git status     #@solution@"
+    ]
+   },
+   {
+--
+     "#II.81\n",
+     "# Muestra el contenido del fichero de municipios\n",
+-    "ls murcia/municipios"
++    "cat murcia/municipios     #@solution@"
+    ]
+--
+     "#II.82\n",
+     "# Muestra las diferencias entre el fichero de ríos en tu árbol de trabajo y el repositorio\n",
+-    "git diff murcia/rios"
++    "git diff murcia/rios     #@solution@"
+    ]
+--
+     "#II.83\n",
+     "# Trata de enviar tus cambios en el fichero de ríos al repositorio\n",
+-    "git push"
++    "git push     #@solution@"
+    ]
+--
+     "#II.84\n",
+     "# Haz lo necesario para publicar al remoto los cambios que tienes pendiente\n",
+     "# PASO 1 (añadir al índice)\n",
+-    "git add murcia/rios"
++    "git add murcia     #@solution@"
+--
+     "#II.85\n",
+     "# PASO 2 (confirmar)\n",
+-    "git commit -m \"Añadiendo cambios del fichero rios\""
++    "git commit -m \"Añadiendo algunos ríos y sierras\"     #@solution@"
+    ]
+--
+     "#II.86\n",
+     "# PASO 3 (comprobar)\n",
+-    "git log"
++    "git log     #@solution@"
+    ]
+--
+     "#II.87\n",
+     "# PASO 4 (publicar)\n",
+-    "git push"
+-   ]
+-  },
+
+-    "#III.4\n",
+-    "mkdir p3-ejercicio && cd p3-ejercicio"
++    "rm -rf p3-ejercicio && mkdir p3-ejercicio && cd p3-ejercicio"
+    ]
+   },
+--
+     "#III.1\n",
+     "# Cuenta los caracteres de mojibake.txt\n",
+-    "wc -m mojibake.txt"
++    "wc -m mojibake.txt                   #@solution@"
+    ]
+--
+     "#III.2\n",
+     "# Lista el fichero mojibake de forma que se muestre su tamaño\n",
+-    "ls -l mojibake.txt"
++    "ls -l mojibake.txt                   #@solution@"
+    ]
+--
+     "#III.3\n",
+     "# Usa `file\" para ver el tipo y codificación del fichero\n",
+-    "file mojibake-japanese.txt"
++    "file mojibake-japanese.txt      #@solution@"
+    ]
+--
++    "#III.4\n",
++    "wc -m  mojibake-japanese.txt      #@solution@"
+    ]
+   },
+   {
+--
+     "#III.5\n",
+-    "ls -l mojibake-japanese.txt"
++    "ls -l mojibake-japanese.txt      #@solution@"
+    ]
+   },
+
+-    "#IV.11\n",
+-    "#IV.8\n",
+-    "#IV.7\n",
+-    "#IV.5\n",
+-    "#IV.4\n",
+-    "#IV.2\n",
+-    "#IV.1\n",
+     "# Ejecuta esta celda para generar el fichero array_write.c\n",
+     "cat <<EOF > array_write.c\n",
+     "#define ARRAY_SIZE (1 << 22)\n",
+@@ -214,7 +246,7 @@
+--
++    "#IV.1\n",
++    "nl array_write.s               #@solution@"
++   ]
++  },
++  {
+--
++    "#IV.2\n",
++    "gcc -c array_write.s             #@solution@"
+    ]
+   },
+   {
+--
+     "#IV.3\n",
+-    "objdump -d array_write.o"
++    "objdump -d array_write.o            #@solution@"
+    ]
+   },
+--
++    "#IV.4\n",
++    "gcc -c miprograma.c           #@solution@"
+    ]
+   },
+   {
+--
++    "#IV.5\n",
++    "gcc -c arrays_iguales.c           #@solution@"
+    ]
+   },
+   {
+--
+     "#IV.6\n",
+-    "nm miprograma.o"
++    "nm miprograma.o               #@solution@"
+    ]
+   },
+--
++    "#IV.7\n",
++    "nm -u miprograma.o               #@solution@"
+    ]
+   },
+   {
+--
++    "#IV.8\n",
++    "# gcc miprograma.c -o compara_arrays           #@solution@"
+    ]
+   },
+   {
+--
+     "#IV.9\n",
+     "# Muestra todos los símbolos\n",
+-    "nm arrays_iguales.o"
++    "nm arrays_iguales.o               #@solution@"
+    ]
+--
+     "#IV.10\n",
+     "# Símbolos no definidos´\n",
+-    "nm"
++    "nm -u arrays_iguales.o               #@solution@"
+    ]
+--
++    "#IV.11\n",
++    "gcc miprograma.o arrays_iguales.o -o compara_arrays   #@solution@"
++   ]
+   },
+   {
+
+     "#V.1\n",
+     "# Cámbiate al directorio \"image\"\n",
+-    "cd image"
++    "cd image                           #@solution@"
+    ]
+--
+     "#V.2\n",
+     "# Lista el contenido del directorio jpg\n",
+-    "ls jpg"
++    "ls jpg                           #@solution@"
+    ]
+--
+     "#V.3\n",
+     "# Lista todos los ficheros situados en \"jpg\"\n",
+     "# cuyo nombre tenga exactamente 7 caracteres\n",
+     "# seguidos de \".jpg\"\n",
+-    "ls jpg/???????.jpg"
+--
+     "#V.4\n",
+     "# Lista todos los ficheros situados en \"jpg\"\n",
+     "# cuyo nombre contenga la cadena \"le\"\n",
+-    "ls jpg/*le*"
++    " ls jpg/*le*                          #@solution@"
+--
+     "#V.5\n",
+     "# Lista todos los ficheros situados en \"jpg\"\n",
+     "# cuyo nombre contenga las cadenas \"le\" o \"ter\"\n",
+     "# seguidas de la letra 'p' o 'f'\n",
+-    "ls jpg/*{le,ter}{p,f}*"
+--
+     "#V.6\n",
+     "# Lista todos los ficheros situados en \"jpg\"\n",
+     "# cuyo nombre comience con dos caracteres cualquiera\n",
+     "# seguidos de la cadena \"sort\"\n",
+-    "ls jpg/??sort*"
+--
+     "#V.7\n",
+     "# Lista todos los ficheros situados en \"jpg\"\n",
+     "# cuyo nombre NO comienze por los caracteres\n",
+     "# de la 'b' a la 't'\n",
+-    "ls jpg/[!b-t]*"
+--
+     "#V.8\n",
+     "# Lista todos los ficheros situados en cualquier subdirectorio\n",
+     "# inmediato de \"image\" (bmp, gif, etc.) cuyo nombre contenga al menos un carácter numérico\n",
+-    "ls */*[0-9]*"
++    " ls */*[0-9]*                           #@solution@"
+--
+     "#V.9\n",
+     "# Lista todos los ficheros situados en cualquier subdirectorio\n",
+     "# inmediato de \"image\" (bmp, gif, etc.) cuyo nombre contenga \n",
+     "# las cadenas \"fall\" o \"bri\", y acaben con la letra 'g' o 'f'\n",
+-    "ls */*{fall,bri}*{g,f}"
+--
+     "#V.10\n",
+     "# Cámbiate al directorio padre\n",
+-    "cd .."
++    "cd ..                           #@solution@"
+    ]
+--
+     "#V.11\n",
+     "# Crea una copia íntegra del directorio \"document\" llamada \"docu\" (Pista: opción -r)\n",
+-    "cp -r document docu"
++    "cp -r document docu                           #@solution@"
+    ]
+--
+     "#V.12\n",
+     "# Lista el contenido de los directorios \"txt\", \"rtf\" y \"xls\" (situados dentro de \"docu\")\n",
+-    "ls docu/{txt,rtf,xls}"
++    "ls docu/txt docu/xls docu/rtf                           #@solution@"
+    ]
+--
+     "#V.13\n",
+     "# Crea cuatro directorios llamados samples1 samples2 samples3 samples4\n",
+-    "mkdir samples1 samples2 samples3 samples4"
++    "mkdir -p samples1 samples2 samples3 samples4                           #@solution@"
+    ]
+--
+     "#V.14\n",
+     "# Copia el fichero \"sample1.txt\" (situado en \"docu/txt\")\n",
+     "# al directorio \"samples1\"\n",
+-    "cp docu/txt/sample1.txt samples1/sample1.txt"
++    "cp docu/txt/sample1.txt samples1                           #@solution@"
+--
+     "#V.15\n",
+     "# Copia el fichero \"sample2.txt\" (situado en \"docu/txt\")\n",
+     "# al directorio \"samples1\", de forma que la nueva copia se llame \"ejemplo2.txt\"\n",
+-    "cp docu/txt/sample2.txt samples1/ejemplo2.txt"
++    "cp docu/txt/sample2.txt samples1/ejemplo2.txt                           #@solution@"
+--
+     "#V.16\n",
+     "# Mueve el fichero \"sample3.txt\" (situado en \"docu/txt\")\n",
+     "# al directorio \"samples1\", de forma que ahora se llame \"ejemplo3.txt\"\n",
+-    "mv docu/txt/sample3.txt samples1/ejemplo3.txt"
++    "mv docu/txt/sample3.txt samples1/ejemplo3.txt                           #@solution@"
+--
+     "#V.17\n",
+     "# Mueve los ficheros cuyo nombre contenga la cadena \"sample\" (situados en \"docu/rtf\")\n",
+     "# al directorio \"samples1\"\n",
+-    "mv docu/rtf/*sample* samples1/"
++    "mv docu/rtf/*sample* samples1/                           #@solution@"
+--
++    "#V.18\n",
++    "ls samples1                           #@solution@"
++   ]
+   },
+   {
+--
+     "#V.19\n",
+     "# Borra los ficheros del directorio \"sample1\" cuyo nombre contenga dos caracteres numéricos consecutivos\n",
+-    "rm samples1/*[0-9][0-9]*"
++    "rm samples1/*[0-9][0-9]*                          #@solution@"
+    ]
+--
+-    "#V.18\n",
+     "ls samples1"
+    ]
+   },
+@@ -787,26 +584,14 @@
+--
+     "#V.20\n",
+     "# Muestra el contenido del fichero sample1.txt situado en \"samples1\"\n",
+-    "cat samples1/sample1.txt"
++    "cat samples1/sample1.txt                          #@solution@"
+    ]
+--
+     "#V.21\n",
+     "# Copia los ficheros que empiecen por f y acaben por .xls (situados en \"docu/xls\")\n",
+     "# al directorio \"samples2\"\n",
+-    "cp docu/xls/f*.xls samples2/"
++    "cp docu/xls/f*.xls samples2                          #@solution@"
+--
+     "#V.22\n",
+     "# Copia todos los ficheros situados en \"samples1\"\n",
+     "# al directorio \"samples2\"\n",
+-    "cp samples1/* samples2/"
++    "cp samples1/* samples2                          #@solution@"
+--
+     "#V.23\n",
+     "# Renombra el fichero \"file_example_XLS_100.xls\" en la carpeta \"samples2\"\n",
+     "# para que pase a llamarse \"ejemplo_100.xls\"\n",
+-    "mv samples2/file_example_XLS_100.xls samples2/ejemplo_100.xls"
++    "mv samples2/file_example_XLS_100.xls samples2/ejemplo_100.xls                          #@solution@"
+--
+     "#V.24\n",
+     "# Borra los ficheros cuyo nombre contenga las cadena \"sample\" o \"example\", situados en \n",
+     "# el directorio \"samples2\"\n",
+-    "rm samples2/*{sample,example}*"
++    "rm samples2/*{sample,example}*                          #@solution@"
+--
+     "#V.26\n",
+     "# Borra los ficheros de \"samples3\" cuyo nombre contenga el carácter x o el carácter f\n",
+-    "rm samples3/*{x,f}*"
++    "rm samples3/*[xf]*                          #@solution@"
+    ]
+--
+     "#V.27\n",
+     "# Copia los ficheros cuyo nombre termine por \"pdf\" o \"doc\",\n",
+     "# situados en cualquier subdirectorio inmediato de \"docu\", al directorio samples4\n",
+-    "cp docu/*/*{pdf,doc} samples4/"
++    "cp docu/*/*.{doc,pdf} samples4                          #@solution@"
+--
+     "#V.28\n",
+     "# Copia los ficheros cuyo nombre empiece por \"sample\",\n",
+     "# situados en los directorios \"docx\" o \"xlsx\" al directorio \"samples4\"\n",
+-    "cp docu/{docx,xlsx}/sample* samples4/"
++    "cp docu/{docx,xlsx}/sample* samples4                          #@solution@"
+--
+     "#V.29\n",
+     "# Borra los ficheros de \"samples4\" que terminen en \"docx\" y contengan un carácter numérico menor que 4\n",
+-    "rm samples4/*[0-3]*docx"
++    "rm samples4/*[1-3]*docx                          #@solution@"
+    ]
+--
+     "#V.30\n",
+     "# Lista los ficheros de \"samples4\" que acaben en \".docx\"\n",
+-    "ls samples4/*.docx"
++    "ls samples4/*.docx                          #@solution@"
+    ]
+--
+     "#V.31\n",
+     "# Mueve al directorio padre los ficheros de \"samples4\" cuyo nombre\n",
+     "# contenga un carácter numérico seguido de una letra mayúscula o minúscula\n",
+-    "mv samples4/*[0-9][a-zA-Z]* ../"
++    "mv samples4/*[0-9][A-Za-z]* ..                          #@solution@"
+--
+     "#V.32\n",
+     "# Lista los ficheros del directorio padre que empiecen por \"file\"\n",
+-    "ls ../file*"
++    "ls ../file*                          #@solution@"
+    ]
+--
+     "#V.33\n",
+     "# Lista el contenido del directorio \"src\" que hay dentro de \"nano\"\n",
+     "# (Mira el árbol de directorios al principio del notebook para\n",
+     "# averiguar la ruta relativa a \"nano\" desde \"sample_files\")\n",
+-    "ls ../nano/src"
+--
+     "#V.34\n",
+     "# Crea un directorio llamado \"source\"\n",
+-    "mkdir source"
++    "mkdir source                          #@solution@"
+    ]
+--
+     "#V.35\n",
+     "# Copia al directorio \"source\" los ficheros del directorio \"src\" que hay en \"nano\" \n",
+     "# cuyo nombre acaba en \".h\"\n",
+-    "cp ../nano/src/*.h source/"
++    "cp ../nano/src/*.h source                          #@solution@"
+--
+     "#V.36\n",
+     "# Copia al directorio \"source\" los ficheros del directorio \"src\" que hay en \"nano\" \n",
+-    "# cuyo nombre empieza por \"c\" seguido de una vocal\n",
+-    "cp ../nano/src/c[aeiou]* source/"
++    "# cuyo nombre empieza por \"c\" seguido de una vocal minúscula\n",
+--
+     "#V.37\n",
+     "# Copia al directorio \"source\" los ficheros del directorio \"src\" que hay en \"nano\" \n",
+     "# cuyo nombre contiene la cadena \"to\" o la cadena \"pro\", y acaben por \".c\"\n",
+-    "cp ../nano/src/*{to,pro}*.c source/"
++    "cp ../nano/src/*{to,pro}*.c source                          #@solution@"
+--
++    "#V.38\n",
++    "# Copia el contenido íntegro del directorio \"video\"  a un\n",
++    "# nuevo directorio llamado \"video-backup\" situado en el mismo directorio\n",
++    "cp -r video video-backup                          #@solution@"
++   ]
+--
++    "#V.39\n",
++    "# Mueve al directorio \"video\" los ficheros que hay en su subdirectorio \"mp4\" \n",
++    "# cuyo nombre comience por 'c' y acabe por 'mp4' (NOTA: Utiliza comodines)\n",
++    "mv video/mp4/c*mp4 video                          #@solution@"
++   ]
+--
++    "#V.40\n",
++    "# Listado largo de los contenidos del directorio  \"video\".\n",
++    "ls -l video/                          #@solution@"
++   ]
++  },
+--
++    "#V.41\n",
++    "# Cambia los permisos del directorio \"video\" para \n",
++    "# que el propietario pueda leer y escribir, y nadie más tenga acceso\n",
++    "chmod 600 video                          #@solution@"
++   ]
+--
++    "#V.42\n",
++    "# Intenta cambiarte al directorio  \"video\" (comenta # la línea si obtienes un error).\n",
++    "# cd video                          #@solution@"
++   ]
++  },
+--
++    "#V.43\n",
++    "# Vuelve a cambiar los permisos del directorio ahora para\n",
++    "# que el propietario pueda leer y ejecutar, y nadie más tenga acceso\n",
++    "chmod 500 video                          #@solution@"
++   ]
++  },
+--
++    "#V.44\n",
++    "# Listado largo de los contenidos del directorio  \"video\".\n",
++    "ls -l video/                          #@solution@"
++   ]
++  },
+--
++    "#V.45\n",
++    "# Elimina los ficheros del directorio \"video\" que contengan la cadena \"in\". ¿Puedes? Comenta (#) la línea si no\n",
++    "# rm video/*in*                          #@solution@"
++   ]
++  },
+--
++    "#V.46\n",
++    "# Elimina todos los ficheros del directorio \"videos/mp4\". ¿Puedes? Comenta (#) la línea si no\n",
++    "rm video/mp4/*                          #@solution@"
++   ]
++  },
+--
++    "#V.47\n",
++    "# Haz un listado del directorio \"video/mp4\".\n",
++    "ls video/mp4                          #@solution@"
++   ]
++  },
+--
++    "#V.48\n",
++    "# Establece los permisos adecuados para que el siguiente comando no \n",
++    "# pueda \"vaciar\" el contenido del fichero \"video/cliff_waterfall.mp4\"\n",
++    "# (no se pueda modificar su contenido)\n",
++    "chmod 400 video/cliff_waterfall.mp4                          #@solution@"
+--
++    "#V.49\n",
++    "# Haz un listado largo del fichero anterior (cliff_waterfall.mp4).\n",
++    "ls -lh video/cliff_waterfall.mp4                          #@solution@"
++   ]
++  },
+--
++    "#V.50\n",
++    "# Elimina todos los permisos del directorio  \"video\".\n",
++    "chmod 000 video                          #@solution@"
++   ]
++  },
+--
++    "#V.51\n",
++    "# ¿Puedes listarlo? Comenta el comando en caso de que dé error\n",
++    "ls video                          #@solution@"
++   ]
++  },
+--
++    "#V.52\n",
++    "# Establece todos los permisos para el propietario y el grupo del directorio \"video\",\n",
++    "# y permisos de lectura y ejecución para el resto de usuarios\n",
++    "chmod 775 video                          #@solution@"
++   ]
+--
++    "#V.53\n",
++    "# Borra recursivamente todo lo que hay dentro del directorio \"video\" \n",
++    "# usando para ello la opción \"rf\" (sin que pida confirmación)\n",
++    "rm -rf video                          #@solution@"
++   ]
+--
++    "#V.54\n",
++    "# Renombra el directorio \"video-backup\" para que se llame \"video\"\n",
++    "mv video-backup video                          #@solution@"
++   ]
++  },
+
+     "#V.1\n",
+     "# todos los directorios que cuelgan del directorio actual\n",
+-    "find . -type d "
++    "find . -type d                  #@solution@"
+    ]
+--
+     "#V.2\n",
+     "# todos los directorios que cuelgan del directorio actual\n",
+     "# cuyo nombre acabe en 'v'\n",
+-    "find . -type d -name \"*v\""
++    "find . -type d -name \"*v\"                  #@solution@"
+--
+     "#V.3\n",
+     "# todos los ficheros en \"image\", cuyo nombre empiece con \n",
+-    "# una letra entre la b y la f, con extensión .jpg y \n",
+-    "find image -type f -name \"[b-f]*.jpg\""
++    "# una letra entre la b y la f, con extensión .jpg \n",
+--
+     "#V.4\n",
+     "# todos los directorios en \"image\", cuyo nombre contenga la\n",
+     "# letra 'c' en segundo lugar\n",
+-    "find image -type d -name \"*?c*\""
++    "find image -type d -name \"?c*\"                  #@solution@"
+--
+     "#V.5\n",
+     "# todos los ficheros en \"audio\", cuyo nombre contenga las letras 'b', w' y 'v', \n",
+     "# en ese orden (no necesariamente consecutivas)\n",
+-    "find audio -type f -name \"*b*w*v*\""
++    "find audio -type f -name \"*b*w*v*\"                  #@solution@"
+--
+     "#V.6\n",
+     "# todos los ficheros en \"audio\", cuyo nombre contenga un subrayado (_) seguido de\n",
+     "# dos caracteres numéricos de los cuales el primero debe ser 0 y el segundo entre 4 y 6\n",
+-    "find audio -type f -name \"*_0[4-6]*\""
++    "find audio -type f -name \"*_0[4-6]*\"                  #@solution@"
+--
+     "#V.7\n",
+     "# todos los ficheros en \"video\", cuyo nombre contenga las letras 'r', w' y 'v', \n",
+     "# en ese orden (no necesariamente consecutivas), y acabe con \".\" seguido de tres caracteres cualquiera\n",
+-    "find video -type f -name \"*r*w*v*.???\""
++    "find video -type f -name \"*r*w*v*.???\"                  #@solution@"
+--
+     "#V.8\n",
+     "# todos los ficheros a partir del directorio actual \n",
+     "# cuyo nombre contenga la letra z pero no la letra h\n",
+-    "find . -type f -name \"*z*\" ! -name \"*h*\""
++    "find . -type f -name \"*z*\" ! -name \"*h*\"                  #@solution@"
+--
+     "#V.9\n",
+     "# todos los ficheros a partir del directorio actual \n",
+     "# cuyo nombre acabe en \"mkv\" y tengan tamaño superior a 1MiB\n",
+-    "find . -type f -name \"*mkv\" -size +1M"
++    "find . -type f -name \"*mkv\" -size +1M                  #@solution@"
+--
+     "#V.10\n",
+     "# todos los ficheros a partir del directorio actual \n",
+     "# que tengan tamaño entre 200KiB y 250KiB\n",
+-    "find . -type f -size +200k -size -250k"
++    "find . -type f -size +200k -size -250k                  #@solution@"
+--
+     "#V.11\n",
+     "# todos los ficheros a partir del directorio actual \n",
+     "# que tengan fecha de modificación inferior a 1 día\n",
+-    "find . -type f -mtime -1"
++    "find . -type f -mtime -1                  #@solution@"
+--
+     "#V.12\n",
+     "# todos los ficheros a partir del directorio actual \n",
+     "# que tengan fecha de modificación superior a 30 días\n",
+     "# cuyo nombre contenga la cadena \"ice\"\n",
+-    "find . -type f -mtime +30 -name \"*ice*\""
+--
+     "#V.13\n",
+     "# Busca en el contenido del fichero Src/main.c aquellas líneas\n",
+     "# que contengan la cadena \"shell\" \n",
+-    "grep shell Src/main.c"
++    "grep shell Src/main.c                  #@solution@"
+--
+     "#V.14\n",
+     "# Busca en el contenido de los ficheros de Src cuyo nombre acabe en .c\n",
+     "# aquellas líneas que contengan la cadena \"BASH\" (en mayúsculas)\n",
+-    "grep BASH Src/*.c"
++    "grep BASH Src/*.c                  #@solution@"
+--
+     "#V.15\n",
+     "# Busca en el contenido de los ficheros de Src cuyo nombre acabe en .c\n",
+     "# aquellas líneas que contengan la palabra \"ansi\" (no como fragmento\n",
+     "# de otra function más larga), sin atender al uso de mayúsculas\n",
+-    "grep -w -i ansi Src/*.c"
+--
+     "#V.16\n",
+     "# Busca recursivamente en el directorio actual ficheros que contengan\n",
+     "# la cadena \"standard C\" (usa las comillas para quitar el significado especial al carácter espacio)\n",
+-    "grep -r \"standard C\" ."
++    "grep -r \"standard C\" .                  #@solution@"
+--
+     "#V.17\n",
+     "# Busca recursivamente en el directorio \"Doc\" ficheros que contengan\n",
+     "# una cadena numérica que empiece por cualquier número seguido de \"567\"\n",
+-    "grep -r \"[0-9]567\"  Doc/"
++    "grep -r \"[0-9]567\" Doc                  #@solution@"
+--
+     "#V.18\n",
+     "# Busca recursivamente en el directorio \"Doc\" ficheros que contengan\n",
+     "# líneas que comiencen por un número seguido de un guión (-)\n",
+-    "grep -r \"^[0-9]-\" Doc/"
++    "grep -r \"^[0-9]-\" Doc/                  #@solution@"
+--
+     "#V.19\n",
+     "# Busca en los ficheros \"NEWS\" e \"INSTALL\" líneas que acaben por \"rary\"\n",
+-    "grep \"rary$\" NEWS INSTALL"
++    "grep \"rary$\" NEWS INSTALL                  #@solution@"
+    ]
+--
+     "#V.21\n",
+     "# Crea un fichero empaquetado con tar comprimido con gzip, llamado\n",
+     "# \"zsh-util-misc.tar.gz\" que contenga los ficheros ubicados en los \n",
+     "# directorios \"Util\" y \"Misc\" cuyo nombre contiene la cadena \"ex\",\n",
+     "# mostrando por pantalla los ficheros que se van empaquetando\n",
+--
+     "#V.22\n",
+     "# Muestra los ficheros que hay dentro del empaquetado \"zsh-util-misc.tar.gz\"\n",
+     "# sin extraer su contenido\n",
+-    "tar ztvf zsh-util-misc.tar.gz"
++    "tar ztvf zsh-util-misc.tar.gz                  #@solution@"
+--
+     "#V.23\n",
+     "# Borra los ficheros ubicados en los directorios \n",
+-    "# \"Util\" y \"Misc\" cuyo nombre contiene la cadena \"ex\",\n",
+-    "rm Util/*ex* Misc/*ex*"
++    "# \"Util\" y \"Misc\" cuyo nombre contiene la cadena \"ex\"\n",
+--
+     "#V.24\n",
+     "# Muestra el estado del árbol de trabajo (copia del repositorio Git de \"zsh\")\n",
+-    "git status ."
++    "git status                   #@solution@"
+    ]
+--
+     "#V.25\n",
+     "# Desempaqueta el fichero \"zsh-util-misc.tar.gz\", mostrando\n",
+     "# los ficheros que se van generando al descomprimir\n",
+-    "tar zxvf zsh-util-misc.tar.gz"
++    "tar zxvf zsh-util-misc.tar.gz                  #@solution@"
+--
+     "#V.26\n",
+     "# Borra todos los ficheros del directorio actual que acaben en \"tar.gz\"\n",
+-    "rm ./*tar.gz"
++    "rm *.tar.gz                  #@solution@"
+    ]
+--
+     "#V.27\n",
+     "# Muestra el estado del árbol de trabajo (copia del repositorio Git de \"zsh\")\n",
+-    "git status ."
++    "git status                  #@solution@"
+    ]
+
+-    "#VII.38\n",
+-    "#VII.34\n",
+-    "#VII.29\n",
+-    "#VII.28\n",
+-    "#VII.27\n",
+-    "#VII.26\n",
+-    "#VII.9\n",
+-    "# Comando para lanzar gnome-text-editor en segundo plano\n",
+-    "gnome-text-editor &"
++    "#VII.1\n",
++    "# Comando para lanzar gedit en segundo plano\n",
++    "gedit &                             #@solution@"
+    ]
+   },
+--
+     "#VII.2\n",
+     "# Comando para terminar la ejecución del proceso lanzado a partir del nombre del programa\n",
+-    "kill 61532"
++    "pkill gedit                        #@solution@"
+    ]
+--
++    "#VII.3\n",
++    "# Lanzar okteta y después gedit, ambos en primer plano\n",
++    "okteta; gedit;                  #@solution@"
+    ]
+   },
+--
++    "#VII.4\n",
++    "# Lanzar okteta y después gedit, ambos en segundo plano\n",
++    "okteta & gedit &                #@solution@"
+    ]
+   },
+--
+     "#VII.5\n",
+     "# Comando para monitorizar los procesos activos lanzados en este terminal\n",
+-    "ps"
++    "ps                                          #@solution@"
+    ]
+--
+     "#VII.6\n",
+     "# Comando para terminar el proceso lanzado en segundo plano\n",
+-    "kill 27254"
++    "kill 27254 # PID de okteta              #@solution@"
+    ]
+--
+     "#VII.7\n",
+     "# Comando para averiguar el PID del un proceso por el nombre del comando ejecutado\n",
+-    "pgrep okteta"
++    "pgrep okteta                        #@solution@"
+    ]
+--
+     "#VII.8\n",
+-    "pkill okteta"
++    "pkill okteta                        #@solution@"
+    ]
+   },
+--
++    "#VII.9\n",
++    "ps -AF          #@solution@"
+    ]
+   },
+   {
+--
+     "#VII.10\n",
+     "# Lista todos los ficheros en `/usr/bin/` cuyo nombre empiece por 'l'\n",
+     "# y tenga exactamente dos caracteres\n",
+-    "ls /usr/bin/l?"
++    "ls /usr/bin/l?                          #@solution@"
+--
+     "#VII.11\n",
+     "# Repite el comando anterior, redireccionando la salida a un fichero llamado progs-l.txt\n",
+-    "ls /usr/bin/l? > progs-l.txt"
++    "ls /usr/bin/l? > progs-l.txt              #@solution@"
+    ]
+--
+     "#VII.12\n",
+     "# Muestra el contenido del fichero progs-l.txt\n",
+-    "cat progs-l.txt"
++    "cat progs-l.txt                             #@solution@"
+    ]
+--
+     "#VII.13\n",
+     "# Añade al final de dicho fichero un mensaje que diga \"FIN DEL LISTADO\", usando `echo` y la redirección\n",
+-    "echo \"FIN DEL LISTADO\" >> progs-l.txt"
++    "echo \"FIN DEL LISTADO\" >> progs-l.txt       #@solution@"
+    ]
+--
+     "#VII.14\n",
+     "# Muestra de nuevo el contenido del fichero\n",
+-    "cat progs-l.txt"
++    "cat progs-l.txt             #@solution@"
+    ]
+--
+     "#VII.15\n",
+     "# Utilizando el comando ls con la opción adecuada y la redirección de la salida estándar/de error,\n",
+     "# averigua sobre qué subdirectorios de /etc no tienes permisos de acceso. PISTA: usa /dev/null\n",
+     "# para descartar la salida que no te interese.\n",
+-    "ls -ld /etc/* > /dev/null 2>&1"
+--
+     "#VII.16\n",
+     "# Crea dos directorios, llamados dir1 y dir2\n",
+-    "mkdir dir1 dir2"
++    "mkdir dir1 dir2                 #@solution@"
+    ]
+--
+     "#VII.17\n",
+     "# Copia el fichero stubborn a dir2\n",
+-    "cp stubborn dir2"
++    "cp stubborn dir1                #@solution@"
+    ]
+--
++    "#VII.18\n",
++    "# Copia el fichero stubborn a dir2\n",
++    "cp uninterruptible dir2         #@solution@"
++   ]
++  },
+--
+     "#VII.19\n",
+     "# Listar el contenido de dir1 y dir2 en un mismo comando\n",
+-    "ls dir1 dir2"
++    "ls dir1 dir2                    #@solution@"
+    ]
+--
+     "#VII.20\n",
+     "# Cambia los permisos a dir2 para que nadie tenga acceso\n",
+-    "chmod 000 dir2"
++    "chmod 000 dir2                          #@solution@"
+    ]
+--
+     "#VII.21\n",
+     "# Listar el contenido de dir1 y dir2 en un mismo comando\n",
+-    "ls dir1 dir2"
++    "ls dir1 dir2                            #@solution@"
+    ]
+--
+     "#VII.22\n",
+     "# Utilizando la redirección de la salida estándar/de error, lista\n",
+     "# los directorios dir1 y dir2, de forma que los mensajes de error\n",
+     "# vayan al fichero \"errores_ls\" y el resto al fichero \"salida_ls\"\n",
+-    "ls -ld dir1 dir2 > salida_ls 2> errores_ls"
+--
+     "#VII.23\n",
+     "# Muestra el contenido del fichero errores_ls\n",
+-    "cat errores_ls"
++    "cat errores_ls                      #@solution@"
+    ]
+--
+     "#VII.24\n",
+     "# Muestra el contenido del fichero salida_ls\n",
+-    "cat salida_ls"
++    "cat salida_ls                       #@solution@"
+    ]
+--
+     "#VII.25\n",
+-    "echo $LANG"
++    "echo $LANG                 #@solution@"
+    ]
+   },
+--
++    "#VII.26\n",
++    "# ls hola                     #@solution@"
+    ]
+   },
+   {
+--
++    "#VII.27\n",
++    "LANG=xyz; echo $LANG                        #@solution@"
+    ]
+   },
+   {
+--
++    "#VII.28\n",
++    "# ls hola                             #@solution@"
+    ]
+   },
+   {
+--
++    "#VII.29\n",
++    "LANG=es_ES.UTF-8; echo $LANG            #@solution@"
+    ]
+   },
+   {
+--
+     "#VII.30\n",
+     "# Crea un subdirectorio llamado bin en tu directorio de inicio de usuario (si no existe ya)\n",
+-    "mkdir bin"
++    "mkdir -p $HOME/bin                  #@solution@"
+    ]
+--
+     "#VII.31\n",
+     "# Copia al directorio creado anteriormente el fichero /usr/bin/ls, con el nombre myls\n",
+-    "cp /usr/bin/ls ~/bin/myls"
++    "cp /usr/bin/ls $HOME/bin/myls               #@solution@"
+    ]
+--
+     "#VII.32\n",
+     "# Sin cambiarte de directorio, ejecuta mediante una ruta absoluta el programa `myls` con la opción '-l':\n",
+-    "./bin/myls -l"
++    "~/bin/myls -l                               #@solution@"
+    ]
+--
+     "#VII.33\n",
+     "# Modifica el valor de `PATH` para añadir el subdirectorio \"bin\" creado anteriormente:\n",
+-    "export PATH=$PATH:/~/bin"
++    "PATH=$PATH:$HOME/bin                    #@solution@"
+    ]
+--
++    "#VII.34\n",
++    "myls                        #@solution@"
+    ]
+   },
+   {
+--
+     "#VII.35\n",
+-    "echo $USER"
++    "echo $USER                      #@solution@"
+    ]
+   },
+--
+     "#VII.36\n",
+     "# Define una nueva variable llamada \"PRUEBA\" con valor \"hola\"\n",
+-    "export PRUEBA=\"hola\""
++    "PRUEBA=\"hola\"                   #@solution@"
+    ]
+--
+     "#VII.37\n",
+     "# Muestra el valor de la variable PRUEBA en el shell actual\n",
+-    "echo $PRUEBA"
++    "echo $PRUEBA                        #@solution@"
+    ]
+--
+-    "#VII.39\n",
+-    "# Establece permisos de ejecución para el fichero creado\n",
+-    "chmod +x variables.sh"
+-   ]
+-  },
+--
+-    "#VII.40\n",
+-    "# Ejecuta el script\n",
+-    "./variables.sh"
++    "#VII.38\n",
++    "cat variables.sh            #@solution@"
+    ]
+   },
+   {
+--
++    "#VII.39\n",
++    "# Establece permisos de ejecución para el fichero creado\n",
++    "chmod 755 variables.sh              #@solution@"
+    ]
+   },
+--
++    "#VII.40\n",
++    "# Ejecuta el script\n",
++    "./variables.sh                      #@solution@"
+    ]
+   },
+--
+     "#VII.41\n",
+     "# Imprime el valor de la variable MYVAR en el shell actual\n",
+-    "echo $MYVAR"
++    "echo $MYVAR                     #@solution@"
+    ]
+
+-    "#VII.41\n",
+-    "#VII.40\n",
+-    "#VII.39\n",
+-    "#VII.38\n",
+-    "#VII.37\n",
+-    "#VII.36\n",
+-    "#VII.35\n",
+-    "#VII.34\n",
+-    "#VII.33\n",
+-    "#VII.32\n",
+-    "#VII.31\n",
+-    "#VII.30\n",
+-    "#VII.29\n",
+-    "#VII.28\n",
+-    "#VII.27\n",
+-    "#VII.26\n",
+-    "#VII.25\n",
+-    "#VII.24\n",
+-    "#VII.23\n",
+-    "#VII.22\n",
+-    "#VII.21\n",
+-    "#VII.20\n",
+-    "#VII.19\n",
+-    "#VII.18\n",
+-    "#VII.12\n",
+-    "#VII.7\n",
+-    "#VII.6\n",
+-    "#VII.5\n",
+-    "#VII.2\n",
+-    "#VII.1\n",
+     "rm -rf ~/p7b-ejercicios\n",
+     "mkdir -p ~/p7b-ejercicios\n",
+     "cd ~/p7b-ejercicios"
+@@ -52,58 +22,20 @@
+--
++    "#VII.1\n",
++    "ls -R zsh > allfiles_zsh        #@solution@"
+    ]
+   },
+   {
+--
++    "#VII.2\n",
++    "head allfiles_zsh               #@solution@"
+    ]
+   },
+   {
+--
+     "#VII.3\n",
+-    "tail -n 30 allfiles_zsh"
++    "tail -n 30 allfiles_zsh         #@solution@"
+    ]
+   },
+--
+     "#VII.4\n",
+-    "ls -R zsh | grep \":$\""
++    "ls -R zsh | grep \":$\"           #@solution@"
+    ]
+   },
+--
++    "#VII.5\n",
++    "ls -R zsh | grep \":$\" | tr -d \":\"           #@solution@"
+    ]
+   },
+   {
+--
++    "#VII.6\n",
++    "ls -R zsh | grep \":$\" | tr -d \":\" | wc -l               #@solution@"
+    ]
+   },
+   {
+--
++    "#VII.7\n",
++    "ls -R zsh | grep \":$\" | tr -d \":\" | head -n1            #@solution@"
+    ]
+   },
+   {
+--
+     "#VII.8\n",
+-    "ls -R zsh | grep \":$\" | tr -d \":\" | grep -v \"^zsh$\""
++    "ls -R zsh | grep \":$\" | tr -d \":\" | grep -v \"^zsh$\"         #@solution@"
+    ]
+   },
+--
+     "#VII.9\n",
+-    "ls -R zsh | grep \":$\" | tr -d \":\" | grep -v \"^zsh$\" | wc -l"
++    "ls -R zsh | grep \":$\" | tr -d \":\" | grep -v \"^zsh$\" | wc -l         #@solution@"
+    ]
+   },
+--
+     "#VII.10\n",
+-    "find zsh -type d | wc -l"
++    "find zsh -type d | wc -l            #@solution@"
+    ]
+   },
+--
+     "#VII.11\n",
+-    "find zsh -type d"
++    "find zsh -type d            #@solution@"
+    ]
+   },
+--
++    "#VII.12\n",
++    "find zsh -type d  -name \".*\"            #@solution@"
+    ]
+   },
+   {
+--
+     "#VII.13\n",
+-    "find zsh -type d | grep -v \"\\.git\" | grep -v \"^zsh$\" | wc -l"
++    "find zsh -type d | grep -v \"\\.git\" | grep -v \"^zsh$\" | wc -l            #@solution@"
+    ]
+   },
+--
+     "#VII.14\n",
+-    "ls -lR zsh | grep \"^d\" | wc -l"
++    "ls -lR zsh | grep \"^d\" | wc -l      #@solution@"
+    ]
+   },
+--
+     "#VII.15\n",
+-    "find zsh -type f | grep -v \"/\\.\" | wc -l"
++    "find zsh -type f | grep -v \"/\\.\" | wc -l        #@solution@"
+    ]
+   },
+--
+     "#VII.16\n",
+-    "find zsh/Src -type f -size +50k -printf \"%s;%p;%M;%u;%g\\n\" > source_code.csv"
++    "find zsh/Src -type f -size +50k -printf \"%s;%p;%M;%u;%g\\n\" > source_code.csv        #@solution@"
+    ]
+   },
+--
+     "#VII.17\n",
+-    "cat source_code.csv"
++    "cat source_code.csv     #@solution@"
+    ]
+   },
+--
++    "#VII.18\n",
++    "cat source_code.csv | sed -e \"s/${USER}$/developers/g\"      #@solution@"
+    ]
+   },
+   {
+--
++    "#VII.19\n",
++    "cat source_code.csv | sed -e \"s/${USER}$/developers/g\" | sed -e \"s/;${USER};/;steve;/g\"   #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.20\n",
++    "cat source_code.csv | sed -e \"s/${USER}$/developers/g\" | sed -e \"s/;${USER};/;steve;/g\" | grep [bgk] > files_steve.csv        #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.21\n",
++    "cat files_steve.csv             #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.22\n",
++    "cat source_code.csv | sed -e \"s/${USER}$/developers/g\" | sed -e \"s/;$USER;/;tom;/g\" | grep -v [bgk] > files_tom.csv       #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.23\n",
++    "sort -n files_tom.csv       #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.24\n",
++    "cat *{tom,steve}*.csv > source_code_developers.csv          #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.25\n",
++    "wc -l source*.csv           #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.26\n",
++    "sort -n source*dev*.csv | head -n1 | cut -d \";\" -f4         #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.27\n",
++    "sort -n source*dev*.csv | tail -n2 | cut -d \";\" -f2,4       #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.28\n",
++    "sort -n source*dev*.csv | grep \"steve\" | tail -n2 | cut -d \";\" -f1-2        #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.29\n",
++    "cat source_code.csv | cut -d \";\" -f1 | sort -n -r           #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.30\n",
++    "cat source_code.csv | cut -d \";\" -f1 | sort -n -r | head -n1            #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.31\n",
++    "cat source_code.csv | sort -n | cut -d \";\" -f2 | tail -n3           #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.32\n",
++    "wc $(cat source_code.csv | sort -n | cut -d \";\" -f2 | tail -n3)         #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.33\n",
++    "wc $(cat source_code.csv | sort -n | cut -d \";\" -f2 | tail -n3) | tr -s \" \"| grep -v \"total\" | cut -d \" \" -f3       #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.34\n",
++    "wc $(cat source_code.csv | sort -n | cut -d \";\" -f2 | tail -n3) | tr -s \" \"| grep -v \"total\" | cut -d \" \" -f3 | paste -sd+ | bc     #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.35\n",
++    "grep '#!/bin/sh' $(find zsh -type f | grep -v \"/\\.git\")             #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.36\n",
++    "grep -n '#!/bin/sh' $(find zsh -type f | grep -v \"/\\.git\") | grep \":1:\"         #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.37\n",
++    "grep -n '#!/bin/sh' $(find zsh -type f | grep -v \"/\\.git\") | grep \":1:\" | cut -d \":\" -f1            #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.38\n",
++    "ls -l $(grep -n '#!/bin/sh' $(find zsh -type f | grep -v \"/\\.git\") | grep \":1:\" | cut -d \":\" -f1)           #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.39\n",
++    "ls -l $(grep -n '#!/bin/sh' $(find zsh -type f | grep -v \"/\\.git\") | grep \":1:\" | cut -d \":\" -f1) | grep \"r-x\"      #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.40\n",
++    "ls -l $(grep -n '#!/bin/sh' $(find zsh -type f | grep -v \"/\\.git\") | grep \":1:\" | cut -d \":\" -f1) | grep \"r-x\" | rev | cut -d \" \" -f1 | rev         #@solution@"
++   ]
+   },
+   {
+--
++    "#VII.41\n",
++    "head -n3 $(ls -l $(grep -n '#!/bin/sh' $(find zsh -type f | grep -v \"/\\.git\") | grep \":1:\" | cut -d \":\" -f1) | grep \"r-x\" | rev | cut -d \" \" -f1 | rev)         #@solution@"
++   ]
+   },
+   {
+

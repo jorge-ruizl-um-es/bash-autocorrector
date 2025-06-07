@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 '''
 Módulo en el que adaptamos las funciones básicas de correct_exam para poder aplicar lo mismo a la corrección de repositorios y entregas de alumnos, generando los mismos CSV finales.
 '''
@@ -10,14 +12,14 @@ import os
 
 # CONSTANTE - diccionario con cada bloque a estudiar y los ficheros que contiene cada uno
 IMPORTANT_FILES = {
-			"1": "practica1-introshell-ejercicios-etiquetados.ipynb",
-			"2": "practica2-introgit-ejercicios-etiquetados.ipynb",
-			"3": "practica3-okteta-enteros-reales-ejercicios-etiquetados.ipynb", 
-			"4": "practica4a-compilacion-ejecucion-ejercicios-etiquetados.ipynb", 
-			"5a": "practica5a-ficheros-ejercicios-etiquetados.ipynb", 
-			"5b": "practica5b-busquedas-ejercicios-etiquetados.ipynb", 
-			"7a": "practica7a-procesos-ejercicios-etiquetados.ipynb", 
-			"7b": "practica7b-tuberias-ejercicios-etiquetados.ipynb"
+			"1": "practica1-introshell-ejercicios-etiquetados2.ipynb",
+			"2": "practica2-introgit-ejercicios-etiquetados2.ipynb",
+			"3": "practica3-okteta-enteros-reales-ejercicios-etiquetados2.ipynb", 
+			"4": "practica4a-compilacion-ejecucion-ejercicios-etiquetados2.ipynb", 
+			"5a": "practica5a-ficheros-ejercicios-etiquetados2.ipynb", 
+			"5b": "practica5b-busquedas-ejercicios-etiquetados2.ipynb", 
+			"7a": "practica7a-procesos-ejercicios-etiquetados2.ipynb", 
+			"7b": "practica7b-tuberias-ejercicios-etiquetados2.ipynb"
 }
 
 

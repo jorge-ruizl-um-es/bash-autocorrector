@@ -88,8 +88,8 @@ def etiquetar_practica(bloque:int, fichero:str, ruta_base:str):
 						continue
 					alumno_first_line = alumno_source_lines[0].strip()
 					
-					# Comparar con la primera línea de la solución (sin etiquetas)
-					if alumno_first_line == sol_cell_info['first_line']:
+					# Comparar con la primera línea de la solución (sin etiquetas) o si es un commit en ambas
+					if alumno_first_line == sol_cell_info['first_line'] or ('git commit' in alumno_first_line and 'git commit' in sol_cell_info['first_line']):
 						# Etiquetar celda encontrada
 						alumno_cells[j]['source'] = f"{tag}\n{alumno_cell['source']}"
 						found = True
