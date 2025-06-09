@@ -89,5 +89,12 @@ Generates multiple CSV reports from the automatic correction results. For each s
 
 This script automates report generation and supports large-scale evaluation with fine-grained diagnostics.
 
+---
+
+## Credits
+
+This project has been developed by Jorge Ruiz López ([jorge.ruizl@um.es](emailto:jorge.ruizl@um.es)), as part of his academic internship at the Department of Computer Engineering and Technology, Faculty of Computer Science, University of Murcia (Spain). It has academic and educational goals.
+
+
 
 
